@@ -1,0 +1,241 @@
+/* =========================================
+   GLOBAL STYLES (Leader only)
+========================================= */
+:root {
+    --bg-color: #1e1e2e;
+    --text-color: #cdd6f4;
+    --primary: #89b4fa;
+    --surface: #313244;
+    --nav-height: 60px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    padding-top: var(--nav-height);
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background-color: var(--surface);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+nav a {
+    color: var(--text-color);
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+section {
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid var(--surface);
+}
+
+/* =========================================
+   TEAM MEMBER STYLES (Namespaced)
+========================================= */
+
+/* --- Person 1: HOME --- */
+/* Example: #home h1 { color: red; } */
+/* =========================================
+   PERSON 1: HOME SECTION STYLES
+========================================= */
+
+/* Upgrading the background to a subtle gradient */
+#home {
+    background: linear-gradient(135deg, var(--bg-color) 0%, #2a2b3d 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Adding a glowing ambient orb in the background */
+#home::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: var(--primary);
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.15;
+    top: -150px;
+    right: -100px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#home .home-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    width: 100%;
+    text-align: center;
+}
+
+#home .home-badge {
+    background: rgba(137, 180, 250, 0.15);
+    color: var(--primary);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 25px;
+    border: 1px solid rgba(137, 180, 250, 0.3);
+}
+
+#home .home-title {
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    /* Creating a text gradient using the catppuccin colors */
+    background: linear-gradient(to right, var(--text-color), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#home .home-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    line-height: 1.6;
+}
+
+/* Premium Glassmorphism Container */
+#home .home-search-glass {
+    background: rgba(49, 50, 68, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(205, 214, 244, 0.1);
+    padding: 35px;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+#home .home-search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+#home .input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 200px;
+    text-align: left;
+}
+
+#home .input-group label {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#home .input-group input {
+    width: 100%;
+    padding: 16px;
+    background: rgba(30, 30, 46, 0.6);
+    border: 1px solid rgba(205, 214, 244, 0.1);
+    border-radius: 12px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Beautiful glow effect when typing */
+#home .input-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(30, 30, 46, 0.9);
+    box-shadow: 0 0 15px rgba(137, 180, 250, 0.3);
+}
+
+/* Adjusting the calendar picker icon for dark mode */
+#home .input-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+#home .home-search-btn {
+    padding: 16px 35px;
+    background: var(--primary);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 0 1 auto;
+    height: 54px; 
+}
+
+#home .home-search-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(137, 180, 250, 0.5);
+}
+
+/* Mobile Responsiveness Rules */
+@media (max-width: 768px) {
+    #home .home-title {
+        font-size: 3rem;
+    }
+    #home .home-search-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* --- Person 2: SCHEDULE --- */
+/* Example: #schedule table { width: 100%; } */
+
+
+/* --- Person 3: BOOK TICKET --- */
+
+
+/* --- Person 4: DASHBOARD --- */
+
+
+/* --- Person 5: BAGGAGE --- */
+
+
+/* --- Person 6: FACILITIES --- */
+
+
+/* --- Person 7: SUPPORT --- */
