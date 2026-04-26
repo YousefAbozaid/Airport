@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Airport Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
+    <div id="mobile-funny-overlay">
+        <span class="funny-icon">🕵️‍♂️</span>
+        <h2>Whoa there, tiny screen!</h2>
+        <p>This airport is way too massive to fit inside your phone. <br>Please use a computer or a tablet before our planes crash into your bezels! ✈️💥📱</p>
+    </div>
+
     <nav>
+        <img src="favicon.svg" alt="Logo" class="navigation-logo">
         <a href="#home">Home</a>
         <a href="#schedule">Schedule</a>
         <a href="#book">Book Ticket</a>
@@ -18,54 +30,189 @@
         <a href="#support">Support</a>
     </nav>
 
-<section id="home">
-        <div class="home-hero-content">
-            <span class="home-badge">✈️ Your Journey Begins Here</span>
+    <section id="home" class="welcome-section">
+        <div class="welcome-container">
+            <div class="welcome-content">
+                <p class="welcome-subtitle">Premium Travel Experience</p>
+                <h1 class="welcome-title">Explore The World <br>With Elegance</h1>
+                <p class="welcome-text">Find and book the best flights to your dream destinations with our modern, seamless airport experience.</p>
+            </div>
             
-            <h1 class="home-title">Explore The World Together</h1>
-            
-            <p class="home-subtitle">Find and book the best flights to your dream destinations with our modern, seamless airport experience.</p>
-
-            <div class="home-search-glass">
-                <form class="home-search-form" action="#">
-                    <div class="input-group">
+            <div class="flight-search-container">
+                <form class="flight-search-form" onsubmit="event.preventDefault();">
+                    <div class="form-input-group">
                         <label>From</label>
-                        <input type="text" placeholder="Departure (e.g., Cairo)" required>
+                        <input type="text" placeholder="Departure City" required>
                     </div>
-                    
-                    <div class="input-group">
+                    <div class="form-input-group">
                         <label>To</label>
-                        <input type="text" placeholder="Destination (e.g., Tokyo)" required>
+                        <input type="text" placeholder="Destination City" required>
                     </div>
-                    
-                    <div class="input-group">
+                    <div class="form-input-group">
                         <label>Date</label>
                         <input type="date" required>
                     </div>
-                    
-                    <button type="submit" class="home-search-btn">Search Flights</button>
+                    <div class="form-input-group">
+                        <label>Passengers</label>
+                        <select>
+                            <option>1 Passenger</option>
+                            <option>2 Passengers</option>
+                            <option>3+ Passengers</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="search-button">Search Flights</button>
                 </form>
+            </div>
+        </div>
+        <img src="./assets/images/hero-banner.png" alt="airplane" class="welcome-airplane-image">
+    </section>
+
+    <section id="schedule" class="schedule-section">
+        <!-- Team Member 2: Add Schedule Code Here -->
+    </section>
+
+    <section id="book" class="book-ticket-section">
+        <!-- Team Member 3: Add Book Ticket Code Here -->
+    </section>
+
+    <section id="dashboard" class="flight-dashboard">
+        <h2 class="section-heading">Flight Dashboard</h2>
+
+        <div class="statistics-container">
+            <div class="statistic-card">
+                <span class="statistic-number" data-target="24">0</span>
+                <span>Today's Flights</span>
+            </div>
+            <div class="statistic-card">
+                <span class="statistic-number" data-target="3847">0</span>
+                <span>Passengers</span>
+            </div>
+            <div class="statistic-card">
+                <span class="statistic-number" data-target="87" data-suffix="%">0%</span>
+                <span>On Time</span>
+            </div>
+            <div class="statistic-card">
+                <span class="statistic-number" data-target="3">0</span>
+                <span>Delayed</span>
+            </div>
+        </div>
+
+        <div class="dashboard-filters">
+            <button class="filter-button active" onclick="filterFlights('all')">All</button>
+            <button class="filter-button" onclick="filterFlights('On Time')">On Time</button>
+            <button class="filter-button" onclick="filterFlights('Delayed')">Delayed</button>
+            <button class="filter-button" onclick="filterFlights('Boarding')">Boarding</button>
+        </div>
+
+        <div class="data-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Flight</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="flight-table-body">
+                    <tr data-status="On Time">
+                        <td>MS-401</td><td>Cairo</td><td>Dubai</td><td>08:00 AM</td>
+                        <td><span class="status-badge on-time">On Time</span></td>
+                    </tr>
+                    <tr data-status="Boarding">
+                        <td>MS-512</td><td>Cairo</td><td>London</td><td>09:30 AM</td>
+                        <td><span class="status-badge boarding">Boarding</span></td>
+                    </tr>
+                    <tr data-status="Delayed">
+                        <td>MS-733</td><td>Cairo</td><td>Paris</td><td>11:00 AM</td>
+                        <td><span class="status-badge delayed">Delayed</span></td>
+                    </tr>
+                    <tr data-status="On Time">
+                        <td>MS-890</td><td>Cairo</td><td>Tokyo</td><td>01:15 PM</td>
+                        <td><span class="status-badge on-time">On Time</span></td>
+                    </tr>
+                    <tr data-status="Delayed">
+                        <td>MS-614</td><td>Cairo</td><td>New York</td><td>03:45 PM</td>
+                        <td><span class="status-badge delayed">Delayed</span></td>
+                    </tr>
+                    <tr data-status="Boarding">
+                        <td>MS-220</td><td>Cairo</td><td>Istanbul</td><td>05:00 PM</td>
+                        <td><span class="status-badge boarding">Boarding</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="baggage" class="baggage-section">
+        <div class="baggage-content-container">
+            <div class="section-header-container">
+                <span class="floating-icon">🧳</span>
+                <h2>Baggage Services</h2>
+                <p>Track your luggage and stay informed</p>
+                <div class="decorative-divider"></div>
+            </div>
+
+            <div class="information-cards-container">
+                <div class="information-card">
+                    <h3>🔍 Track Your Baggage</h3>
+                    <p>Enter your claim number or flight number to track your baggage.</p>
+                </div>
+                <div class="information-card">
+                    <h3>⚖️ Allowed Limits</h3>
+                    <p>Economy: 23 kg — First Class: 32 kg — Carry-on: 7 kg.</p>
+                </div>
+                <div class="information-card">
+                    <h3>📋 Report Lost Baggage</h3>
+                    <p>If missing, proceed to the baggage desk in the arrivals hall.</p>
+                </div>
+            </div>
+
+            <div class="status-container">
+                <h3>🛬 Baggage Claim Status</h3>
+                <div class="search-input-container">
+                    <input type="text" id="baggage-search-input" placeholder="Search by flight number..." oninput="filterBaggage()">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Flight No.</th>
+                            <th>Route</th>
+                            <th>Belt No.</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="baggage-table-body">
+                        <tr>
+                            <td>MS 701</td><td>Cairo ✈ Dubai</td><td>Belt 3</td>
+                            <td><span class="status-badge on-time">Arrived</span></td>
+                        </tr>
+                        <tr>
+                            <td>EK 928</td><td>Cairo ✈ London</td><td>Belt 1</td>
+                            <td><span class="status-badge boarding">Loading</span></td>
+                        </tr>
+                        <tr>
+                            <td>TK 452</td><td>Istanbul ✈ Cairo</td><td>Belt 5</td>
+                            <td><span class="status-badge boarding">In Transit</span></td>
+                        </tr>
+                        <tr>
+                            <td>LH 334</td><td>Frankfurt ✈ Cairo</td><td>Belt 2</td>
+                            <td><span class="status-badge delayed">Delayed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
-    <section id="schedule"
-        </section>
+    <section id="facilities" class="facilities-section">
+        <!-- Team Member 6: Add Facilities Code Here -->
+    </section>
 
-    <section id="book">
-        </section>
-
-    <section id="dashboard">
-        </section>
-
-    <section id="baggage">
-        </section>
-
-    <section id="facilities">
-        </section>
-
-    <section id="support">
-        </section>
+    <section id="support" class="support-section">
+        <!-- Team Member 7: Add Support Code Here -->
+    </section>
 
 </body>
 </html>

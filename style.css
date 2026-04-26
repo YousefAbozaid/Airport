@@ -1,241 +1,423 @@
-/* =========================================
-   GLOBAL STYLES (Leader only)
-========================================= */
+/* ==========================================================================
+   VARIABLES & GLOBALS
+   ========================================================================== */
 :root {
-    --bg-color: #1e1e2e;
-    --text-color: #cdd6f4;
-    --primary: #89b4fa;
-    --surface: #313244;
-    --nav-height: 60px;
+  --bg-dark: #0c1811;
+  --bg-card: #12281c;
+  --text-main: #f5f5f5;
+  --text-muted: rgba(245, 245, 245, 0.7);
+  --accent: #a88a38;
+  --accent-hover: #be9d44;
+  --border: rgba(168, 138, 56, 0.2);
+  --font-main: 'DM Sans', sans-serif;
+  --nav-height: 60px;
 }
 
-html {
-    scroll-behavior: smooth;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-family: sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    padding-top: var(--nav-height);
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  padding-top: var(--nav-height);
+  line-height: 1.6;
 }
 
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--nav-height);
-    background-color: var(--surface);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-
-nav a {
-    color: var(--text-color);
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: var(--primary);
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 section {
-    min-height: 100vh;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 2px solid var(--surface);
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--bg-card);
 }
 
-/* =========================================
-   TEAM MEMBER STYLES (Namespaced)
-========================================= */
-
-/* --- Person 1: HOME --- */
-/* Example: #home h1 { color: red; } */
-/* =========================================
-   PERSON 1: HOME SECTION STYLES
-========================================= */
-
-/* Upgrading the background to a subtle gradient */
-#home {
-    background: linear-gradient(135deg, var(--bg-color) 0%, #2a2b3d 100%);
-    position: relative;
-    overflow: hidden;
+.section-heading {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-/* Adding a glowing ambient orb in the background */
-#home::before {
-    content: '';
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    background: var(--primary);
-    border-radius: 50%;
-    filter: blur(150px);
-    opacity: 0.15;
-    top: -150px;
-    right: -100px;
-    z-index: 0;
-    pointer-events: none;
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: var(--nav-height);
+  background-color: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-#home .home-hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 1000px;
-    width: 100%;
-    text-align: center;
+.navigation-logo {
+  height: 32px;
+  width: 32px;
+  margin-right: auto;
+  margin-left: 20px;
 }
 
-#home .home-badge {
-    background: rgba(137, 180, 250, 0.15);
-    color: var(--primary);
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    display: inline-block;
-    margin-bottom: 25px;
-    border: 1px solid rgba(137, 180, 250, 0.3);
+nav a {
+  margin: 0 15px;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
 }
 
-#home .home-title {
-    font-size: 4.5rem;
-    margin-bottom: 20px;
-    line-height: 1.1;
-    /* Creating a text gradient using the catppuccin colors */
-    background: linear-gradient(to right, var(--text-color), var(--primary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+nav a:hover {
+  background: var(--accent);
+  color: var(--bg-dark);
 }
 
-#home .home-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    opacity: 0.8;
-    max-width: 600px;
-    margin: 0 auto 50px auto;
-    line-height: 1.6;
+/* ==========================================================================
+   WELCOME SECTION
+   ========================================================================== */
+.welcome-section {
+  position: relative;
+  background-color: var(--bg-card);
+  padding: 100px 20px 40px;
 }
 
-/* Premium Glassmorphism Container */
-#home .home-search-glass {
-    background: rgba(49, 50, 68, 0.4);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(205, 214, 244, 0.1);
-    padding: 35px;
-    border-radius: 24px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+.welcome-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('./assets/images/hero-bg.jpg') center/cover;
+  opacity: 0.2;
+  z-index: 0;
 }
 
-#home .home-search-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: flex-end;
+.welcome-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 1;
 }
 
-#home .input-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 200px;
-    text-align: left;
+.welcome-content {
+  max-width: 500px;
 }
 
-#home .input-group label {
-    margin-bottom: 10px;
-    font-size: 0.9rem;
-    color: var(--primary);
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.welcome-subtitle {
+  color: var(--accent);
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-#home .input-group input {
-    width: 100%;
-    padding: 16px;
-    background: rgba(30, 30, 46, 0.6);
-    border: 1px solid rgba(205, 214, 244, 0.1);
-    border-radius: 12px;
-    color: var(--text-color);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
+.welcome-title {
+  font-size: 4rem;
+  margin: 10px 0 20px;
+  line-height: 1.1;
 }
 
-/* Beautiful glow effect when typing */
-#home .input-group input:focus {
-    outline: none;
-    border-color: var(--primary);
-    background: rgba(30, 30, 46, 0.9);
-    box-shadow: 0 0 15px rgba(137, 180, 250, 0.3);
+.welcome-text {
+  font-size: 1.2rem;
+  color: var(--text-muted);
 }
 
-/* Adjusting the calendar picker icon for dark mode */
-#home .input-group input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-    cursor: pointer;
+.flight-search-container {
+  background: rgba(18, 40, 28, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  padding: 30px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
 }
 
-#home .home-search-btn {
-    padding: 16px 35px;
-    background: var(--primary);
-    color: var(--bg-color);
-    border: none;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex: 0 1 auto;
-    height: 54px; 
+.flight-search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-#home .home-search-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(137, 180, 250, 0.5);
+.flight-search-form label {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-/* Mobile Responsiveness Rules */
+.flight-search-form input,
+.flight-search-form select {
+  width: 100%;
+  background: rgba(12, 24, 17, 0.8);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 5px;
+  font-family: inherit;
+}
+
+.search-button {
+  background-color: var(--accent);
+  color: var(--bg-dark);
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.search-button:hover {
+  background-color: var(--accent-hover);
+}
+
+.welcome-airplane-image {
+  position: absolute;
+  bottom: 0;
+  max-width: 80%;
+  z-index: 0;
+  animation: float 2s ease-in-out infinite alternate;
+}
+
+/* ==========================================================================
+   DASHBOARD SECTION
+   ========================================================================== */
+.statistics-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  max-width: 900px;
+  margin-bottom: 30px;
+}
+
+.statistic-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 12px;
+  min-width: 160px;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.statistic-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.statistic-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--accent);
+  display: block;
+}
+
+.dashboard-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.filter-button {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.filter-button.active,
+.filter-button:hover {
+  background: var(--accent);
+  color: var(--bg-dark);
+}
+
+.data-table-container {
+  width: 100%;
+  max-width: 900px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(168, 138, 56, 0.05);
+}
+
+tbody tr {
+  transition: background 0.15s ease;
+}
+
+tbody tr:hover {
+  background: rgba(168, 138, 56, 0.05);
+}
+
+th {
+  background: var(--bg-card);
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   BAGGAGE SECTION
+   ========================================================================== */
+.baggage-content-container {
+  width: 100%;
+  max-width: 900px;
+}
+
+.section-header-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.floating-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.decorative-divider {
+  width: 60px; height: 3px;
+  background: var(--accent);
+  margin: 14px auto 0; border-radius: 2px;
+}
+
+.information-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.information-card {
+  flex: 1;
+  min-width: 250px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 12px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.information-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.information-card h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.status-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.search-input-container input {
+  width: 100%;
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 10px;
+  border-radius: 8px;
+  margin: 15px 0;
+  font-family: inherit;
+}
+
+/* ==========================================================================
+   BADGES
+   ========================================================================== */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.status-badge.on-time { background: rgba(40, 200, 120, 0.15); color: #4ade80; }
+.status-badge.delayed { background: rgba(248, 113, 113, 0.15); color: #f87171; }
+.status-badge.boarding { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+
+/* ==========================================================================
+   MOBILE FUNNY OVERLAY
+   ========================================================================== */
+#mobile-funny-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  inset: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  z-index: 9999;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+#mobile-funny-overlay .funny-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+  animation: float 2s infinite ease-in-out;
+}
+
+#mobile-funny-overlay h2 {
+  color: var(--accent);
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+#mobile-funny-overlay p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* Show the overlay and hide everything else on screens smaller than 768px */
 @media (max-width: 768px) {
-    #home .home-title {
-        font-size: 3rem;
-    }
-    #home .home-search-btn {
-        width: 100%;
-        margin-top: 10px;
-    }
+  body > *:not(#mobile-funny-overlay) {
+    display: none !important;
+  }
+  
+  #mobile-funny-overlay {
+    display: flex;
+  }
 }
-
-/* --- Person 2: SCHEDULE --- */
-/* Example: #schedule table { width: 100%; } */
-
-
-/* --- Person 3: BOOK TICKET --- */
-
-
-/* --- Person 4: DASHBOARD --- */
-
-
-/* --- Person 5: BAGGAGE --- */
-
-
-/* --- Person 6: FACILITIES --- */
-
-
-/* --- Person 7: SUPPORT --- */
