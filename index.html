@@ -72,7 +72,51 @@
     </section>
 
     <section id="book" class="book-ticket-section">
-        <!-- Team Member 3: Add Book Ticket Code Here -->
+        <div class="booking-content-container">
+            <div class="section-header-container">
+                <span class="floating-icon">✈️</span>
+                <h2>Book Your Flight</h2>
+                <p>Find the best deals for your next journey</p>
+                <div class="decorative-divider"></div>
+            </div>
+
+            <div class="booking-form-container">
+                <form id="bookingForm" class="flight-search-form">
+                    <div class="form-row">
+                        <div class="form-input-group">
+                            <label>From</label>
+                            <input type="text" id="from" placeholder="e.g., Cairo" required>
+                        </div>
+                        <div class="form-input-group">
+                            <label>To</label>
+                            <input type="text" id="to" placeholder="e.g., Paris" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-input-group">
+                            <label>Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-input-group">
+                            <label>Class</label>
+                            <select id="class">
+                                <option value="Economy">Economy</option>
+                                <option value="Business">Business</option>
+                            </select>
+                        </div>
+                        <div class="form-input-group">
+                            <label>Passengers</label>
+                            <input type="number" id="passengers" min="1" value="1">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="search-button">Search Flights</button>
+                </form>
+            </div>
+
+            <div id="results" class="results-container"></div>
+        </div>
     </section>
 
     <section id="dashboard" class="flight-dashboard">
@@ -211,7 +255,48 @@
     </section>
 
     <section id="support" class="support-section">
-        <!-- Team Member 7: Add Support Code Here -->
+        <div class="support-content-container">
+            <div class="section-header-container">
+                <span class="floating-icon">🎧</span>
+                <h2>Support Center</h2>
+                <p class="subtitle">We are here to help 24/7</p>
+                <div class="decorative-divider"></div>
+            </div>
+
+            <div class="information-cards-container">
+                <div class="information-card">
+                    <h3>📞 Call Us</h3>
+                    <p>+1 (800) 123-4567<br><span class="support-subtext">Available 24/7</span></p>
+                </div>
+                <div class="information-card">
+                    <h3>✉️ Email Us</h3>
+                    <p>support@airport.com<br><span class="support-subtext">We reply within 24h</span></p>
+                </div>
+                <div class="information-card">
+                    <h3>❓ FAQ</h3>
+                    <p>Visit our Help Center for frequently asked questions.</p>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <h3 class="contact-form-title">Send us a message</h3>
+                <form id="support-form" class="flight-search-form">
+                    <div class="form-input-group">
+                        <label>Name</label>
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-input-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-input-group">
+                        <label>Message</label>
+                        <textarea placeholder="How can we help you?" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="search-button">Send Message</button>
+                </form>
+            </div>
+        </div>
     </section>
 
 </body>
