@@ -1,23 +1,23 @@
-// Simple number counter for Dashboard
-function startCounters() {
-    const counters = document.querySelectorAll('.statistic-number');
-    counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
-        const suffix = counter.getAttribute('data-suffix') || '';
-        let count = 0;
-        const step = Math.ceil(target / 50); // Speed of count
-        
-        const updateCount = setInterval(() => {
-            count += step;
-            if (count >= target) {
-                count = target;
-                clearInterval(updateCount);
-            }
-            counter.innerText = count + suffix;
-        }, 30);
+// ==========================================================================
+// Person 1: Navigation & Home Section
+// ==========================================================================
+const welcomeForm = document.getElementById('welcome-search-form');
+if (welcomeForm) {
+    welcomeForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = this.querySelector('.search-button');
+        const originalText = btn.innerText;
+        btn.innerText = 'Searching Flights... ✈️';
+        setTimeout(() => {
+            btn.innerText = originalText;
+            document.getElementById('book').scrollIntoView({ behavior: 'smooth' });
+        }, 800);
     });
 }
 
+// ==========================================================================
+// Person 2: Flight Schedule Section
+// ==========================================================================
 // Filter flights in Dashboard
 function filterFlights(status) {
     // Highlight active button
@@ -32,40 +32,9 @@ function filterFlights(status) {
     });
 }
 
-// Filter baggage by search
-function filterBaggage() {
-    const query = document.getElementById('baggage-search-input').value.toLowerCase();
-    document.querySelectorAll('#baggage-table-body tr').forEach(row => {
-        row.style.display = row.innerText.toLowerCase().includes(query) ? '' : 'none';
-    });
-}
-
-// Handle Support Form Submission
-const supportForm = document.getElementById('support-form');
-if (supportForm) {
-    supportForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent page reload
-        
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerText;
-        
-        // Show success state
-        submitBtn.innerText = 'Message Sent! ✅';
-        submitBtn.style.backgroundColor = '#4ade80'; // Match the on-time green
-        submitBtn.style.color = '#0c1811';
-        
-        // Clear the form fields
-        this.reset();
-        
-        // Revert button back to normal after 3 seconds
-        setTimeout(() => {
-            submitBtn.innerText = originalText;
-            submitBtn.style.backgroundColor = '';
-            submitBtn.style.color = '';
-        }, 3000);
-    });
-}
-
+// ==========================================================================
+// Person 3: Book Ticket Section
+// ==========================================================================
 // Book Ticket Form Logic
 const bookingForm = document.getElementById("bookingForm");
 if (bookingForm) {
@@ -109,4 +78,72 @@ if (bookingForm) {
 
 function bookFlight(flightId) {
     alert("Flight " + flightId + " booked successfully ✈️");
+}
+
+// ==========================================================================
+// Person 4: Traveler Dashboard Section
+// ==========================================================================
+// Simple number counter for Dashboard
+function startCounters() {
+    const counters = document.querySelectorAll('.statistic-number');
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const suffix = counter.getAttribute('data-suffix') || '';
+        let count = 0;
+        const step = Math.ceil(target / 50); // Speed of count
+        
+        const updateCount = setInterval(() => {
+            count += step;
+            if (count >= target) {
+                count = target;
+                clearInterval(updateCount);
+            }
+            counter.innerText = count + suffix;
+        }, 30);
+    });
+}
+
+// ==========================================================================
+// Person 5: Baggage Services Section
+// ==========================================================================
+// Filter baggage by search
+function filterBaggage() {
+    const query = document.getElementById('baggage-search-input').value.toLowerCase();
+    document.querySelectorAll('#baggage-table-body tr').forEach(row => {
+        row.style.display = row.innerText.toLowerCase().includes(query) ? '' : 'none';
+    });
+}
+
+// ==========================================================================
+// Person 6: Airport Facilities Section
+// ==========================================================================
+// No specific JS logic is currently assigned to this section.
+
+// ==========================================================================
+// Person 7: Support Center Section
+// ==========================================================================
+// Handle Support Form Submission
+const supportForm = document.getElementById('support-form');
+if (supportForm) {
+    supportForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent page reload
+        
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerText;
+        
+        // Show success state
+        submitBtn.innerText = 'Message Sent! ✅';
+        submitBtn.style.backgroundColor = '#4ade80'; // Match the on-time green
+        submitBtn.style.color = '#0c1811';
+        
+        // Clear the form fields
+        this.reset();
+        
+        // Revert button back to normal after 3 seconds
+        setTimeout(() => {
+            submitBtn.innerText = originalText;
+            submitBtn.style.backgroundColor = '';
+            submitBtn.style.color = '';
+        }, 3000);
+    });
 }
