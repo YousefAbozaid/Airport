@@ -1,9 +1,9 @@
 # Airport Management System (Frontend)
 
 Welcome to the Airport Management System frontend project! This is a collaborative college assignment designed to build a modern, responsive, and interactive landing page for an airport.
-
-## 🚀 Overview
-
+## DEMO
+##  Overview
+https://yousefabozaid.github.io/Airport/
 This project is built using **HTML5, CSS3, and JavaScript (ES6)**. It focuses on clean, beginner-friendly, and maintainable code without relying on complex frameworks or heavy libraries.
 
 ### Key Features
@@ -13,7 +13,7 @@ This project is built using **HTML5, CSS3, and JavaScript (ES6)**. It focuses on
 *   **Baggage Tracking:** A dedicated section to search and track baggage status with a floating animated icon.
 *   **Funny Mobile Overlay:** A humorous "easter egg" overlay that triggers on small screens (< 768px) reminding users to view the massive airport on a larger screen!
 
-## 📂 Project Structure
+## Project Structure
 
 The project uses a simple, flat file structure ideal for learning:
 
@@ -27,7 +27,7 @@ The project uses a simple, flat file structure ideal for learning:
     └── images/       # Backgrounds and hero banners
 ```
 
-## 🤝 Team Collaboration Guide
+## Team Collaboration Guide
 
 This project is divided into sections so that each team member can work on their assigned part without causing merge conflicts. 
 
@@ -42,18 +42,18 @@ If you are a team member, locate your section in `index.html` and add your code 
 6.  **Facilities:** `<section id="facilities">` *(Team Member 6)*
 7.  **Support:** `<section id="support">` *(Team Member 7)*
 
-## 🛠️ How to Run Locally
+##  How to Run Locally
 
 You do not need a build process or server to run this project!
 1.  Clone or download the repository to your computer.
 2.  Open the folder.
 3.  Double-click `index.html` to open it in your default web browser.
 
-## 📝 CSS Naming Convention
+## CSS Naming Convention
 
 We use clear, descriptive English names for classes to ensure everyone understands the layout:
 *   Layouts: `.container`, `.section`, `.content`
 *   Components: `.card`, `.button`, `.badge`
 *   Specifics: `.welcome-section`, `.flight-dashboard`, `.information-card`
 
-Happy coding, and have a safe flight! ✈️
+Happy coding, and have a safe flight! 
