@@ -7,20 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-
-    <div id="mobile-funny-overlay">
-        <span class="funny-icon">🕵️‍♂️</span>
-        <h2>Whoa there, tiny screen!</h2>
-        <p>This airport is way too massive to fit inside your phone. <br>Please use a computer or a tablet before our planes crash into your bezels! ✈️💥📱</p>
-    </div>
-
     <nav>
-        <img src="favicon.svg" alt="Logo" class="navigation-logo">
+        <img src="assets/images/favicon.svg" alt="Logo" class="navigation-logo">
         <a href="#home">Home</a>
         <a href="#schedule">Schedule</a>
         <a href="#book">Book Ticket</a>
@@ -68,7 +61,61 @@
     </section>
 
     <section id="schedule" class="schedule-section">
-        <!-- Team Member 2: Add Schedule Code Here -->
+        <div class="schedule-content-container">
+            <div class="section-header-container">
+                <span class="floating-icon">🗓️</span>
+                <h2>Flight Schedule</h2>
+                <p>Check arrivals and departures</p>
+                <div class="decorative-divider"></div>
+            </div>
+
+            <div class="dashboard-filters">
+                <button class="filter-button active" onclick="filterFlights('all')">All</button>
+                <button class="filter-button" onclick="filterFlights('On Time')">On Time</button>
+                <button class="filter-button" onclick="filterFlights('Delayed')">Delayed</button>
+                <button class="filter-button" onclick="filterFlights('Boarding')">Boarding</button>
+            </div>
+
+            <div class="data-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Flight</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="flight-table-body">
+                        <tr data-status="On Time">
+                            <td>MS-401</td><td>Cairo</td><td>Dubai</td><td>08:00 AM</td>
+                            <td><span class="status-badge on-time">On Time</span></td>
+                        </tr>
+                        <tr data-status="Boarding">
+                            <td>MS-512</td><td>Cairo</td><td>London</td><td>09:30 AM</td>
+                            <td><span class="status-badge boarding">Boarding</span></td>
+                        </tr>
+                        <tr data-status="Delayed">
+                            <td>MS-733</td><td>Cairo</td><td>Paris</td><td>11:00 AM</td>
+                            <td><span class="status-badge delayed">Delayed</span></td>
+                        </tr>
+                        <tr data-status="On Time">
+                            <td>MS-890</td><td>Cairo</td><td>Tokyo</td><td>01:15 PM</td>
+                            <td><span class="status-badge on-time">On Time</span></td>
+                        </tr>
+                        <tr data-status="Delayed">
+                            <td>MS-614</td><td>Cairo</td><td>New York</td><td>03:45 PM</td>
+                            <td><span class="status-badge delayed">Delayed</span></td>
+                        </tr>
+                        <tr data-status="Boarding">
+                            <td>MS-220</td><td>Cairo</td><td>Istanbul</td><td>05:00 PM</td>
+                            <td><span class="status-badge boarding">Boarding</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </section>
 
     <section id="book" class="book-ticket-section">
@@ -119,73 +166,62 @@
         </div>
     </section>
 
-    <section id="dashboard" class="flight-dashboard">
-        <h2 class="section-heading">Flight Dashboard</h2>
+    <section id="dashboard" class="passenger-dashboard">
+        <div class="dashboard-content-container">
+            <div class="section-header-container">
+                <span class="floating-icon">📱</span>
+                <h2>Traveler Dashboard</h2>
+                <p>Your essential real-time airport information</p>
+                <div class="decorative-divider"></div>
+            </div>
 
-        <div class="statistics-container">
-            <div class="statistic-card">
-                <span class="statistic-number" data-target="24">0</span>
-                <span>Today's Flights</span>
+            <!-- Important Alert -->
+            <div class="alert-banner">
+                <span class="alert-icon">⚠️</span>
+                <div class="alert-text">
+                    <strong>Travel Advisory:</strong> Expect higher traffic volumes in Terminal 2 due to holiday travel. Please arrive 3 hours early.
+                </div>
             </div>
-            <div class="statistic-card">
-                <span class="statistic-number" data-target="3847">0</span>
-                <span>Passengers</span>
-            </div>
-            <div class="statistic-card">
-                <span class="statistic-number" data-target="87" data-suffix="%">0%</span>
-                <span>On Time</span>
-            </div>
-            <div class="statistic-card">
-                <span class="statistic-number" data-target="3">0</span>
-                <span>Delayed</span>
-            </div>
-        </div>
 
-        <div class="dashboard-filters">
-            <button class="filter-button active" onclick="filterFlights('all')">All</button>
-            <button class="filter-button" onclick="filterFlights('On Time')">On Time</button>
-            <button class="filter-button" onclick="filterFlights('Delayed')">Delayed</button>
-            <button class="filter-button" onclick="filterFlights('Boarding')">Boarding</button>
-        </div>
+            <!-- Operational Grid -->
+            <div class="dashboard-grid">
+                <!-- Security -->
+                <div class="dashboard-card">
+                    <h3>🛡️ Security Wait Times</h3>
+                    <div class="card-content">
+                        <div class="status-row"><span>Terminal 1</span> <span class="status-badge on-time">5 mins</span></div>
+                        <div class="status-row"><span>Terminal 2</span> <span class="status-badge boarding">15 mins</span></div>
+                    </div>
+                </div>
 
-        <div class="data-table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Flight</th>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Time</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="flight-table-body">
-                    <tr data-status="On Time">
-                        <td>MS-401</td><td>Cairo</td><td>Dubai</td><td>08:00 AM</td>
-                        <td><span class="status-badge on-time">On Time</span></td>
-                    </tr>
-                    <tr data-status="Boarding">
-                        <td>MS-512</td><td>Cairo</td><td>London</td><td>09:30 AM</td>
-                        <td><span class="status-badge boarding">Boarding</span></td>
-                    </tr>
-                    <tr data-status="Delayed">
-                        <td>MS-733</td><td>Cairo</td><td>Paris</td><td>11:00 AM</td>
-                        <td><span class="status-badge delayed">Delayed</span></td>
-                    </tr>
-                    <tr data-status="On Time">
-                        <td>MS-890</td><td>Cairo</td><td>Tokyo</td><td>01:15 PM</td>
-                        <td><span class="status-badge on-time">On Time</span></td>
-                    </tr>
-                    <tr data-status="Delayed">
-                        <td>MS-614</td><td>Cairo</td><td>New York</td><td>03:45 PM</td>
-                        <td><span class="status-badge delayed">Delayed</span></td>
-                    </tr>
-                    <tr data-status="Boarding">
-                        <td>MS-220</td><td>Cairo</td><td>Istanbul</td><td>05:00 PM</td>
-                        <td><span class="status-badge boarding">Boarding</span></td>
-                    </tr>
-                </tbody>
-            </table>
+                <!-- Parking -->
+                <div class="dashboard-card">
+                    <h3>🅿️ Parking Status</h3>
+                    <div class="card-content">
+                        <div class="status-row"><span>Short Term</span> <span class="status-badge delayed">Full</span></div>
+                        <div class="status-row"><span>Long Term</span> <span class="status-badge on-time">Available</span></div>
+                    </div>
+                </div>
+
+                <!-- Weather -->
+                <div class="dashboard-card text-center">
+                    <h3>🌤️ Local Weather</h3>
+                    <div class="card-content">
+                        <p class="huge-text">26°C</p>
+                        <p class="sub-text">Sunny & Clear</p>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="dashboard-card actions-card">
+                    <h3>⚡ Quick Links</h3>
+                    <div class="action-buttons">
+                        <a href="#book" class="action-btn">Book a Flight</a>
+                        <a href="#facilities" class="action-btn">Airport Facilities</a>
+                        <a href="#baggage" class="action-btn">Track Baggage</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -251,7 +287,24 @@
     </section>
 
     <section id="facilities" class="facilities-section">
-        <!-- Team Member 6: Add Facilities Code Here -->
+        <div class="facilities-content-container">
+            <div class="section-header-container">
+                <span class="floating-icon">🏢</span>
+                <h2>Airport Facilities</h2>
+                <p>Everything you need for a comfortable stay</p>
+                <div class="decorative-divider"></div>
+            </div>
+            
+            <div class="simple-list-container">
+                <ul class="facilities-list">
+                    <li><span class="facility-icon">☕</span> <span><strong>Cafes & Restaurants:</strong> Enjoy a variety of dining options.</span></li>
+                    <li><span class="facility-icon">🛍️</span> <span><strong>Duty-Free Shops:</strong> Shop for luxury brands and souvenirs.</span></li>
+                    <li><span class="facility-icon">📶</span> <span><strong>Free Wi-Fi:</strong> Stay connected throughout the terminal.</span></li>
+                    <li><span class="facility-icon">🛋️</span> <span><strong>VIP Lounges:</strong> Relax in premium comfort before your flight.</span></li>
+                    <li><span class="facility-icon">💱</span> <span><strong>Currency Exchange:</strong> Convenient financial services.</span></li>
+                </ul>
+            </div>
+        </div>
     </section>
 
     <section id="support" class="support-section">

@@ -40,18 +40,6 @@ function filterBaggage() {
     });
 }
 
-// Start counters when scrolling to Dashboard
-window.addEventListener('scroll', () => {
-    const dashboard = document.getElementById('dashboard');
-    if (dashboard && !dashboard.dataset.counted) {
-        const rect = dashboard.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-            dashboard.dataset.counted = 'true';
-            startCounters();
-        }
-    }
-});
-
 // Handle Support Form Submission
 const supportForm = document.getElementById('support-form');
 if (supportForm) {
