@@ -344,206 +344,97 @@ nav a:hover {
 /* ==========================================================================
    Person 3: Book Ticket Section
    ========================================================================== */
-.booking-form-container {
+.book-list-container {
   background: var(--bg-card);
   border: 1px solid var(--border);
   padding: 30px;
   border-radius: 16px;
-  margin-bottom: 30px;
 }
 
-.form-row {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.form-row .form-input-group {
-  flex: 1;
+.book-list {
+  list-style: none;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
-.results-container {
+.book-list li {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.flight-result-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 20px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.flight-result-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-}
-
-.flight-info {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.flight-info strong {
-  color: var(--accent);
-  font-size: 1.2rem;
-}
-
-.flight-price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #4ade80;
-  margin-bottom: 10px;
-}
-
-.book-action {
-  text-align: right;
-}
-
-.book-action button {
-  background-color: var(--accent);
-  color: var(--bg-dark);
-  font-weight: bold;
-  padding: 10px 20px;
+  font-size: 1.1rem;
+  padding: 15px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+  transition: background 0.2s ease;
   border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-  font-family: inherit;
 }
 
-.book-action button:hover {
-  background-color: var(--accent-hover);
+.book-list li:last-child {
+  border-bottom: none;
 }
 
-@media (max-width: 600px) {
-  .form-row {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .flight-result-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-  .book-action {
-    text-align: left;
-    width: 100%;
-  }
-  .book-action button {
-    width: 100%;
-  }
+.book-list li:hover {
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.book-icon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 10px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ==========================================================================
    Person 4: Traveler Dashboard Section
    ========================================================================== */
-.alert-banner {
-  display: flex;
-  align-items: center;
-  background: rgba(251, 191, 36, 0.15);
-  border: 1px solid rgba(251, 191, 36, 0.5);
-  padding: 15px 20px;
-  border-radius: 12px;
-  margin-bottom: 30px;
-}
-
-.alert-icon {
-  font-size: 1.5rem;
-  margin-right: 15px;
-}
-
-.alert-text {
-  color: #fcd34d;
-  font-size: 1rem;
-}
-
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.dashboard-card {
+.dashboard-list-container {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  padding: 25px 20px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  padding: 30px;
+  border-radius: 16px;
 }
 
-.dashboard-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-}
-
-.dashboard-card h3 {
-  color: var(--accent);
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-.dashboard-card.text-center .card-content {
-  text-align: center;
-}
-
-.status-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
-}
-
-.status-row:last-child {
-  border-bottom: none;
-}
-
-.huge-text {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--accent);
-  margin: 10px 0;
-}
-
-.sub-text {
-  color: var(--text-muted);
-}
-
-.action-buttons {
+.dashboard-list {
+  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: auto;
 }
 
-.action-btn {
-  display: block;
-  text-align: center;
-  background: rgba(56, 189, 248, 0.1);
-  color: var(--text-main);
-  border: 1px solid var(--border);
-  padding: 10px;
+.dashboard-list li {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  padding: 15px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+  transition: background 0.2s ease;
   border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.action-btn:hover {
-  background: var(--accent);
-  color: var(--bg-dark);
-  font-weight: bold;
+.dashboard-list li:last-child {
+  border-bottom: none;
+}
+
+.dashboard-list li:hover {
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.dashboard-icon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 10px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ==========================================================================

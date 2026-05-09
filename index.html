@@ -75,51 +75,25 @@
                 <div class="decorative-divider"></div>
             </div>
 
-            <div class="dashboard-filters">
-                <button class="filter-button active" onclick="filterFlights('all')">All</button>
-                <button class="filter-button" onclick="filterFlights('On Time')">On Time</button>
-                <button class="filter-button" onclick="filterFlights('Delayed')">Delayed</button>
-                <button class="filter-button" onclick="filterFlights('Boarding')">Boarding</button>
-            </div>
-
-            <div class="data-table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Flight</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Time</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="flight-table-body">
-                        <tr data-status="On Time">
-                            <td>MS-401</td><td>Cairo</td><td>Dubai</td><td>08:00 AM</td>
-                            <td><span class="status-badge on-time">On Time</span></td>
-                        </tr>
-                        <tr data-status="Boarding">
-                            <td>MS-512</td><td>Cairo</td><td>London</td><td>09:30 AM</td>
-                            <td><span class="status-badge boarding">Boarding</span></td>
-                        </tr>
-                        <tr data-status="Delayed">
-                            <td>MS-733</td><td>Cairo</td><td>Paris</td><td>11:00 AM</td>
-                            <td><span class="status-badge delayed">Delayed</span></td>
-                        </tr>
-                        <tr data-status="On Time">
-                            <td>MS-890</td><td>Cairo</td><td>Tokyo</td><td>01:15 PM</td>
-                            <td><span class="status-badge on-time">On Time</span></td>
-                        </tr>
-                        <tr data-status="Delayed">
-                            <td>MS-614</td><td>Cairo</td><td>New York</td><td>03:45 PM</td>
-                            <td><span class="status-badge delayed">Delayed</span></td>
-                        </tr>
-                        <tr data-status="Boarding">
-                            <td>MS-220</td><td>Cairo</td><td>Istanbul</td><td>05:00 PM</td>
-                            <td><span class="status-badge boarding">Boarding</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="simple-list-container">
+                <ul class="facilities-list">
+                    <li>
+                        <span class="facility-icon">✈️</span>
+                        <span><strong>MS-401:</strong> Cairo to Dubai - 08:00 AM <span class="status-badge on-time">On Time</span></span>
+                    </li>
+                    <li>
+                        <span class="facility-icon">✈️</span>
+                        <span><strong>MS-512:</strong> Cairo to London - 09:30 AM <span class="status-badge boarding">Boarding</span></span>
+                    </li>
+                    <li>
+                        <span class="facility-icon">✈️</span>
+                        <span><strong>MS-733:</strong> Cairo to Paris - 11:00 AM <span class="status-badge delayed">Delayed</span></span>
+                    </li>
+                    <li>
+                        <span class="facility-icon">✈️</span>
+                        <span><strong>MS-890:</strong> Cairo to Tokyo - 01:15 PM <span class="status-badge on-time">On Time</span></span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -136,42 +110,31 @@
                 <div class="decorative-divider"></div>
             </div>
 
-            <div class="booking-form-container">
-                <form id="bookingForm" class="flight-search-form">
-                    <div class="form-row">
-                        <div class="form-input-group">
-                            <label>From</label>
-                            <input type="text" id="from" placeholder="e.g., Cairo" required>
-                        </div>
-                        <div class="form-input-group">
-                            <label>To</label>
-                            <input type="text" id="to" placeholder="e.g., Paris" required>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-input-group">
-                            <label>Date</label>
-                            <input type="date" id="date" required>
-                        </div>
-                        <div class="form-input-group">
-                            <label>Class</label>
-                            <select id="class">
-                                <option value="Economy">Economy</option>
-                                <option value="Business">Business</option>
-                            </select>
-                        </div>
-                        <div class="form-input-group">
-                            <label>Passengers</label>
-                            <input type="number" id="passengers" min="1" value="1">
-                        </div>
-                    </div>
-
-                    <button type="submit" class="search-button">Search Flights</button>
-                </form>
+            <!-- Booking List -->
+            <div class="book-list-container">
+                <ul class="book-list">
+                    <li>
+                        <span class="book-icon">📍</span>
+                        <span><strong>Destinations:</strong> Cairo, Paris, London, Dubai, Tokyo, New York, Istanbul.</span>
+                    </li>
+                    <li>
+                        <span class="book-icon">📅</span>
+                        <span><strong>Flexible Dates:</strong> Book flights up to 12 months in advance.</span>
+                    </li>
+                    <li>
+                        <span class="book-icon">💺</span>
+                        <span><strong>Classes:</strong> Economy, Business, and First Class available.</span>
+                    </li>
+                    <li>
+                        <span class="book-icon">👥</span>
+                        <span><strong>Group Bookings:</strong> Special discounts for groups of 5 or more passengers.</span>
+                    </li>
+                    <li>
+                        <span class="book-icon">💳</span>
+                        <span><strong>Payment:</strong> Secure payments via Credit Card, PayPal, and Apple Pay.</span>
+                    </li>
+                </ul>
             </div>
-
-            <div id="results" class="results-container"></div>
         </div>
     </section>
 
@@ -187,52 +150,30 @@
                 <div class="decorative-divider"></div>
             </div>
 
-            <!-- Important Alert -->
-            <div class="alert-banner">
-                <span class="alert-icon">⚠️</span>
-                <div class="alert-text">
-                    <strong>Travel Advisory:</strong> Expect higher traffic volumes in Terminal 2 due to holiday travel. Please arrive 3 hours early.
-                </div>
-            </div>
-
-            <!-- Operational Grid -->
-            <div class="dashboard-grid">
-                <!-- Security -->
-                <div class="dashboard-card">
-                    <h3>🛡️ Security Wait Times</h3>
-                    <div class="card-content">
-                        <div class="status-row"><span>Terminal 1</span> <span class="status-badge on-time">5 mins</span></div>
-                        <div class="status-row"><span>Terminal 2</span> <span class="status-badge boarding">15 mins</span></div>
-                    </div>
-                </div>
-
-                <!-- Parking -->
-                <div class="dashboard-card">
-                    <h3>🅿️ Parking Status</h3>
-                    <div class="card-content">
-                        <div class="status-row"><span>Short Term</span> <span class="status-badge delayed">Full</span></div>
-                        <div class="status-row"><span>Long Term</span> <span class="status-badge on-time">Available</span></div>
-                    </div>
-                </div>
-
-                <!-- Weather -->
-                <div class="dashboard-card text-center">
-                    <h3>🌤️ Local Weather</h3>
-                    <div class="card-content">
-                        <p class="huge-text">26°C</p>
-                        <p class="sub-text">Sunny & Clear</p>
-                    </div>
-                </div>
-
-                <!-- Quick Actions -->
-                <div class="dashboard-card actions-card">
-                    <h3>⚡ Quick Links</h3>
-                    <div class="action-buttons">
-                        <a href="#book" class="action-btn">Book a Flight</a>
-                        <a href="#facilities" class="action-btn">Airport Facilities</a>
-                        <a href="#baggage" class="action-btn">Track Baggage</a>
-                    </div>
-                </div>
+            <!-- Operational List -->
+            <div class="dashboard-list-container">
+                <ul class="dashboard-list">
+                    <li>
+                        <span class="dashboard-icon">⚠️</span>
+                        <span><strong>Travel Advisory:</strong> Expect higher traffic volumes in Terminal 2 due to holiday travel. Please arrive 3 hours early.</span>
+                    </li>
+                    <li>
+                        <span class="dashboard-icon">🛡️</span>
+                        <span><strong>Security Wait Times:</strong> Terminal 1: <span class="status-badge on-time">5 mins</span> | Terminal 2: <span class="status-badge boarding">15 mins</span></span>
+                    </li>
+                    <li>
+                        <span class="dashboard-icon">🅿️</span>
+                        <span><strong>Parking Status:</strong> Short Term: <span class="status-badge delayed">Full</span> | Long Term: <span class="status-badge on-time">Available</span></span>
+                    </li>
+                    <li>
+                        <span class="dashboard-icon">🌤️</span>
+                        <span><strong>Local Weather:</strong> 26°C - Sunny & Clear</span>
+                    </li>
+                    <li>
+                        <span class="dashboard-icon">⚡</span>
+                        <span><strong>Quick Links:</strong> <a href="#book">Book a Flight</a> | <a href="#facilities">Airport Facilities</a> | <a href="#baggage">Track Baggage</a></span>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>

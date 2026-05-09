@@ -35,72 +35,19 @@ function filterFlights(status) {
 // ==========================================================================
 // Person 3: Book Ticket Section
 // ==========================================================================
-// Book Ticket Form Logic
-const bookingForm = document.getElementById("bookingForm");
-if (bookingForm) {
-    bookingForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const from = document.getElementById("from").value;
-        const to = document.getElementById("to").value;
-        const date = document.getElementById("date").value;
-        const passengers = document.getElementById("passengers").value;
-        const flightClass = document.getElementById("class").value;
-
-        const results = document.getElementById("results");
-
-        const flights = [
-            { id: "MS101", time: "08:00 AM", price: 120 },
-            { id: "MS202", time: "01:30 PM", price: 180 },
-            { id: "MS303", time: "09:45 PM", price: 150 }
-        ];
-
-        results.innerHTML = "<h3 style='color: var(--accent); margin-bottom: 15px; text-align: center;'>Available Flights</h3>";
-
-        flights.forEach(flight => {
-            results.innerHTML += `
-                <div class="flight-result-card">
-                    <div class="flight-info">
-                        <strong>${flight.id}</strong>
-                        <span>${from} ✈ ${to}</span>
-                        <span>Date: ${date} | Time: ${flight.time}</span>
-                        <span>Class: ${flightClass} | Passengers: ${passengers}</span>
-                    </div>
-                    <div class="book-action">
-                        <div class="flight-price">$${flight.price * passengers}</div>
-                        <button onclick="bookFlight('${flight.id}')">Book Now</button>
-                    </div>
-                </div>
-            `;
-        });
-    });
-}
-
-function bookFlight(flightId) {
-    alert("Flight " + flightId + " booked successfully ✈️");
+const bookList = document.querySelector('.book-list');
+if (bookList) {
+    const listItems = bookList.querySelectorAll('li');
+    console.log(`Book Ticket initialized with ${listItems.length} items.`);
 }
 
 // ==========================================================================
 // Person 4: Traveler Dashboard Section
 // ==========================================================================
-// Simple number counter for Dashboard
-function startCounters() {
-    const counters = document.querySelectorAll('.statistic-number');
-    counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
-        const suffix = counter.getAttribute('data-suffix') || '';
-        let count = 0;
-        const step = Math.ceil(target / 50); // Speed of count
-        
-        const updateCount = setInterval(() => {
-            count += step;
-            if (count >= target) {
-                count = target;
-                clearInterval(updateCount);
-            }
-            counter.innerText = count + suffix;
-        }, 30);
-    });
+const dashboardList = document.querySelector('.dashboard-list');
+if (dashboardList) {
+    const listItems = dashboardList.querySelectorAll('li');
+    console.log(`Dashboard initialized with ${listItems.length} items.`);
 }
 
 // ==========================================================================
@@ -117,7 +64,11 @@ function filterBaggage() {
 // ==========================================================================
 // Person 6: Airport Facilities Section
 // ==========================================================================
-// No specific JS logic is currently assigned to this section.
+const facilitiesList = document.querySelector('.facilities-list');
+if (facilitiesList) {
+    const listItems = facilitiesList.querySelectorAll('li');
+    console.log(`Facilities initialized with ${listItems.length} items.`);
+}
 
 // ==========================================================================
 // Person 7: Support Center Section
