@@ -1,318 +1,302 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airport Management System</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <!-- ==========================================================================
-         Person 1: Navigation & Home Section
-         ========================================================================== -->
-    <nav>
-        <img src="assets/images/favicon.svg" alt="Logo" class="navigation-logo">
-        <a href="#home">Home</a>
-        <a href="#schedule">Schedule</a>
-        <a href="#book">Book Ticket</a>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#baggage">Baggage</a>
-        <a href="#facilities">Facilities</a>
-        <a href="#support">Support</a>
-    </nav>
+<!DOCTYPE html> <!-- Define the document type as HTML5 -->
+<html lang="en"> <!-- Start the HTML document and set the primary language to English -->
+<head> <!-- Start the head section for metadata and linked resources -->
+    <meta charset="UTF-8"> <!-- Set the character encoding for the document to UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configure the viewport for responsive web design on mobile devices -->
+    <title>Airport Management System</title> <!-- Set the title of the webpage, displayed in the browser tab -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Preconnect to Google Fonts domain for faster loading -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Preconnect to Google Fonts static domain with crossorigin support -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"> <!-- Link the DM Sans font family from Google Fonts -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg"> <!-- Set the website's favicon using an SVG image -->
+    <link rel="stylesheet" href="style.css"> <!-- Link the external CSS stylesheet for styling the page -->
+    <script src="script.js" defer></script> <!-- Link the external JavaScript file and defer its execution until the HTML is parsed -->
+</head> <!-- End the head section -->
+<body> <!-- Start the body section containing the visible content of the page -->
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <!--:                              YOUSEF                                       --> <!-- HTML comment indicating section purpose -->
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <nav> <!-- Start the navigation bar element -->
+        <img src="assets/images/favicon.svg" alt="Logo" class="navigation-logo"> <!-- Display the site logo in the navigation bar -->
+        <a href="#home">Home</a> <!-- Navigation link to the Home section -->
+        <a href="#schedule">Schedule</a> <!-- Navigation link to the Flight Schedule section -->
+        <a href="#book">Book Ticket</a> <!-- Navigation link to the Book Ticket section -->
+        <a href="#dashboard">Dashboard</a> <!-- Navigation link to the Traveler Dashboard section -->
+        <a href="#baggage">Baggage</a> <!-- Navigation link to the Baggage Services section -->
+        <a href="#facilities">Facilities</a> <!-- Navigation link to the Airport Facilities section -->
+        <a href="#support">Support</a> <!-- Navigation link to the Support Center section -->
+    </nav> <!-- End the navigation bar element -->
 
-    <section id="home" class="welcome-section">
-        <div class="welcome-container">
-            <div class="welcome-content">
-                <p class="welcome-subtitle">Premium Travel Experience</p>
-                <h1 class="welcome-title">Explore The World <br>With Elegance</h1>
-                <p class="welcome-text">Find and book the best flights to your dream destinations with our modern, seamless airport experience.</p>
-            </div>
+    <section id="home" class="welcome-section"> <!-- Start the Home section with a specific ID and class -->
+        <div class="welcome-container"> <!-- Wrapper container for the content in the Home section -->
+            <div class="welcome-content"> <!-- Container for the text content in the welcome area -->
+                <p class="welcome-subtitle">Premium Travel Experience</p> <!-- Subtitle paragraph for the welcome area -->
+                <h1 class="welcome-title">Explore The World <br>With Elegance</h1> <!-- Main heading for the welcome area with a line break -->
+                <p class="welcome-text">Find and book the best flights to your dream destinations with our modern, seamless airport experience.</p> <!-- Descriptive text for the welcome area -->
+            </div> <!-- End the text content container -->
             
-            <div class="flight-search-container">
-                <form id="welcome-search-form" class="flight-search-form">
-                    <div class="form-input-group">
-                        <label>From</label>
-                        <input type="text" placeholder="Departure City" required>
-                    </div>
-                    <div class="form-input-group">
-                        <label>To</label>
-                        <input type="text" placeholder="Destination City" required>
-                    </div>
-                    <div class="form-input-group">
-                        <label>Date</label>
-                        <input type="date" required>
-                    </div>
-                    <div class="form-input-group">
-                        <label>Passengers</label>
-                        <select>
-                            <option>1 Passenger</option>
-                            <option>2 Passengers</option>
-                            <option>3+ Passengers</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="search-button">Search Flights</button>
-                </form>
-            </div>
-        </div>
-        <img src="./assets/images/hero-banner.png" alt="airplane" class="welcome-airplane-image">
-    </section>
+            <div class="home-flight-search-container"> <!-- Container for the flight search form -->
+                <form id="welcome-search-form" class="home-flight-search-form"> <!-- Start the flight search form -->
+                    <div class="home-form-input-group"> <!-- Container for an individual form input group -->
+                        <label>Where to?</label> <!-- Label for the search input field -->
+                        <input type="text" placeholder="e.g. Cairo to Paris tomorrow" required style="padding: 15px; font-size: 1.1rem;"> <!-- Text input field for the destination -->
+                    </div> <!-- End the form input group -->
+                    <button type="submit" class="home-search-button">Quick Search</button> <!-- Submit button to trigger the search -->
+                </form> <!-- End the flight search form -->
+            </div> <!-- End the flight search container -->
+        </div> <!-- End the welcome container -->
+        <img src="./assets/images/hero-banner.png" alt="airplane" class="welcome-airplane-image"> <!-- Decorative airplane image for the hero section -->
+    </section> <!-- End the Home section -->
 
-    <!-- ==========================================================================
-         Person 2: Flight Schedule Section
-         ========================================================================== -->
-    <section id="schedule" class="schedule-section">
-        <div class="schedule-content-container">
-            <div class="section-header-container">
-                <span class="floating-icon">🗓️</span>
-                <h2>Flight Schedule</h2>
-                <p>Check arrivals and departures</p>
-                <div class="decorative-divider"></div>
-            </div>
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <!--     Person 2: Flight Schedule Section                                          --> <!-- HTML comment indicating section purpose -->
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <section id="schedule" class="schedule-section"> <!-- Start the Flight Schedule section -->
+        <div class="schedule-content-container"> <!-- Wrapper container for the schedule content -->
+            <div class="schedule-header-container"> <!-- Container for the section header -->
+                <span class="schedule-floating-icon">🗓️</span> <!-- Decorative floating calendar icon -->
+                <h2>Flight Schedule</h2> <!-- Section heading -->
+                <p>Check arrivals and departures</p> <!-- Section descriptive text -->
+                <div class="schedule-decorative-divider"></div> <!-- Decorative visual divider line -->
+            </div> <!-- End the section header container -->
 
-            <div class="simple-list-container">
-                <ul class="facilities-list">
-                    <li>
-                        <span class="facility-icon">✈️</span>
-                        <span><strong>MS-401:</strong> Cairo to Dubai - 08:00 AM <span class="status-badge on-time">On Time</span></span>
-                    </li>
-                    <li>
-                        <span class="facility-icon">✈️</span>
-                        <span><strong>MS-512:</strong> Cairo to London - 09:30 AM <span class="status-badge boarding">Boarding</span></span>
-                    </li>
-                    <li>
-                        <span class="facility-icon">✈️</span>
-                        <span><strong>MS-733:</strong> Cairo to Paris - 11:00 AM <span class="status-badge delayed">Delayed</span></span>
-                    </li>
-                    <li>
-                        <span class="facility-icon">✈️</span>
-                        <span><strong>MS-890:</strong> Cairo to Tokyo - 01:15 PM <span class="status-badge on-time">On Time</span></span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+            <div class="schedule-simple-list-container"> <!-- Container for the list of flights -->
+                <ul class="schedule-facilities-list"> <!-- Start the unordered list of flights -->
+                    <li> <!-- Start a list item for a specific flight -->
+                        <span class="schedule-facility-icon">✈️</span> <!-- Decorative airplane icon for the list item -->
+                        <span><strong>MS-401:</strong> Cairo to Dubai - 08:00 AM <span class="schedule-status-badge schedule-on-time">On Time</span></span> <!-- Details for flight MS-401, including a status badge -->
+                    </li> <!-- End the list item -->
+                    <li> <!-- Start a list item for a specific flight -->
+                        <span class="schedule-facility-icon">✈️</span> <!-- Decorative airplane icon for the list item -->
+                        <span><strong>MS-512:</strong> Cairo to London - 09:30 AM <span class="schedule-status-badge schedule-boarding">Boarding</span></span> <!-- Details for flight MS-512, including a status badge -->
+                    </li> <!-- End the list item -->
+                    <li> <!-- Start a list item for a specific flight -->
+                        <span class="schedule-facility-icon">✈️</span> <!-- Decorative airplane icon for the list item -->
+                        <span><strong>MS-733:</strong> Cairo to Paris - 11:00 AM <span class="schedule-status-badge schedule-delayed">Delayed</span></span> <!-- Details for flight MS-733, including a status badge -->
+                    </li> <!-- End the list item -->
+                    <li> <!-- Start a list item for a specific flight -->
+                        <span class="schedule-facility-icon">✈️</span> <!-- Decorative airplane icon for the list item -->
+                        <span><strong>MS-890:</strong> Cairo to Tokyo - 01:15 PM <span class="schedule-status-badge schedule-on-time">On Time</span></span> <!-- Details for flight MS-890, including a status badge -->
+                    </li> <!-- End the list item -->
+                </ul> <!-- End the unordered list of flights -->
+            </div> <!-- End the list container -->
+        </div> <!-- End the schedule content container -->
+    </section> <!-- End the Flight Schedule section -->
 
-    <!-- ==========================================================================
-         Person 3: Book Ticket Section
-         ========================================================================== -->
-    <section id="book" class="book-ticket-section">
-        <div class="booking-content-container">
-            <div class="section-header-container">
-                <span class="floating-icon">✈️</span>
-                <h2>Book Your Flight</h2>
-                <p>Find the best deals for your next journey</p>
-                <div class="decorative-divider"></div>
-            </div>
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <!--     Person 3: Book Ticket Section                                              --> <!-- HTML comment indicating section purpose -->
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <section id="book" class="book-ticket-section"> <!-- Start the Book Ticket section -->
+        <div class="book-content-container"> <!-- Wrapper container for the booking content -->
+            <div class="book-header-container"> <!-- Container for the section header -->
+                <span class="book-floating-icon">✈️</span> <!-- Decorative floating airplane icon -->
+                <h2>Book Your Flight</h2> <!-- Section heading -->
+                <p>Find the best deals for your next journey</p> <!-- Section descriptive text -->
+                <div class="book-decorative-divider"></div> <!-- Decorative visual divider line -->
+            </div> <!-- End the section header container -->
 
-            <!-- Booking List -->
-            <div class="book-list-container">
-                <ul class="book-list">
-                    <li>
-                        <span class="book-icon">📍</span>
-                        <span><strong>Destinations:</strong> Cairo, Paris, London, Dubai, Tokyo, New York, Istanbul.</span>
-                    </li>
-                    <li>
-                        <span class="book-icon">📅</span>
-                        <span><strong>Flexible Dates:</strong> Book flights up to 12 months in advance.</span>
-                    </li>
-                    <li>
-                        <span class="book-icon">💺</span>
-                        <span><strong>Classes:</strong> Economy, Business, and First Class available.</span>
-                    </li>
-                    <li>
-                        <span class="book-icon">👥</span>
-                        <span><strong>Group Bookings:</strong> Special discounts for groups of 5 or more passengers.</span>
-                    </li>
-                    <li>
-                        <span class="book-icon">💳</span>
-                        <span><strong>Payment:</strong> Secure payments via Credit Card, PayPal, and Apple Pay.</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+            <!-- Booking List --> <!-- HTML comment indicating the start of the booking list -->
+            <div class="book-list-container"> <!-- Container for the booking list -->
+                <ul class="book-list"> <!-- Start the unordered list of booking features -->
+                    <li> <!-- Start a list item for a specific booking feature -->
+                        <span class="book-icon">📍</span> <!-- Decorative pin icon for destinations -->
+                        <span><strong>Destinations:</strong> Cairo, Paris, London, Dubai, Tokyo, New York, Istanbul.</span> <!-- Text detailing available destinations -->
+                    </li> <!-- End the list item -->
+                    <li> <!-- Start a list item for a specific booking feature -->
+                        <span class="book-icon">📅</span> <!-- Decorative calendar icon for dates -->
+                        <span><strong>Flexible Dates:</strong> Book flights up to 12 months in advance.</span> <!-- Text detailing flexible date booking -->
+                    </li> <!-- End the list item -->
+                    <li> <!-- Start a list item for a specific booking feature -->
+                        <span class="book-icon">💺</span> <!-- Decorative seat icon for classes -->
+                        <span><strong>Classes:</strong> Economy, Business, and First Class available.</span> <!-- Text detailing flight classes -->
+                    </li> <!-- End the list item -->
+                    <li> <!-- Start a list item for a specific booking feature -->
+                        <span class="book-icon">👥</span> <!-- Decorative group icon for group bookings -->
+                        <span><strong>Group Bookings:</strong> Special discounts for groups of 5 or more passengers.</span> <!-- Text detailing group discounts -->
+                    </li> <!-- End the list item -->
+                    <li> <!-- Start a list item for a specific booking feature -->
+                        <span class="book-icon">💳</span> <!-- Decorative card icon for payments -->
+                        <span><strong>Payment:</strong> Secure payments via Credit Card, PayPal, and Apple Pay.</span> <!-- Text detailing payment methods -->
+                    </li> <!-- End the list item -->
+                </ul> <!-- End the unordered list of booking features -->
+            </div> <!-- End the booking list container -->
+        </div> <!-- End the booking content container -->
+    </section> <!-- End the Book Ticket section -->
 
-    <!-- ==========================================================================
-         Person 4: Traveler Dashboard Section
-         ========================================================================== -->
-    <section id="dashboard" class="passenger-dashboard">
-        <div class="dashboard-content-container">
-            <div class="section-header-container">
-                <span class="floating-icon">📱</span>
-                <h2>Traveler Dashboard</h2>
-                <p>Your essential real-time airport information</p>
-                <div class="decorative-divider"></div>
-            </div>
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <!--     Person 4: Traveler Dashboard Section                                       --> <!-- HTML comment indicating section purpose -->
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <section id="dashboard" class="dashboard-section"> <!-- Start the Traveler Dashboard section -->
+        <div class="dashboard-content-container"> <!-- Wrapper container for the dashboard content -->
+            <div class="dashboard-header-container"> <!-- Container for the section header -->
+                <span class="dashboard-floating-icon">📱</span> <!-- Decorative floating smartphone icon -->
+                <h2>Traveler Dashboard</h2> <!-- Section heading -->
+                <p>Your essential real-time airport information</p> <!-- Section descriptive text -->
+                <div class="dashboard-decorative-divider"></div> <!-- Decorative visual divider line -->
+            </div> <!-- End the section header container -->
 
-            <!-- Operational List -->
-            <div class="dashboard-list-container">
-                <ul class="dashboard-list">
-                    <li>
-                        <span class="dashboard-icon">⚠️</span>
-                        <span><strong>Travel Advisory:</strong> Expect higher traffic volumes in Terminal 2 due to holiday travel. Please arrive 3 hours early.</span>
-                    </li>
-                    <li>
-                        <span class="dashboard-icon">🛡️</span>
-                        <span><strong>Security Wait Times:</strong> Terminal 1: <span class="status-badge on-time">5 mins</span> | Terminal 2: <span class="status-badge boarding">15 mins</span></span>
-                    </li>
-                    <li>
-                        <span class="dashboard-icon">🅿️</span>
-                        <span><strong>Parking Status:</strong> Short Term: <span class="status-badge delayed">Full</span> | Long Term: <span class="status-badge on-time">Available</span></span>
-                    </li>
-                    <li>
-                        <span class="dashboard-icon">🌤️</span>
-                        <span><strong>Local Weather:</strong> 26°C - Sunny & Clear</span>
-                    </li>
-                    <li>
-                        <span class="dashboard-icon">⚡</span>
-                        <span><strong>Quick Links:</strong> <a href="#book">Book a Flight</a> | <a href="#facilities">Airport Facilities</a> | <a href="#baggage">Track Baggage</a></span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+            <!-- Operational List --> <!-- HTML comment indicating the start of the operational updates list -->
+            <div class="dashboard-list-container"> <!-- Container for the operational updates list -->
+                <ul class="dashboard-list"> <!-- Start the unordered list of operational updates -->
+                    <li> <!-- Start a list item for a specific operational update -->
+                        <span class="dashboard-icon">⚠️</span> <!-- Decorative warning icon for travel advisory -->
+                        <span><strong>Travel Advisory:</strong> Expect higher traffic volumes in Terminal 2 due to holiday travel. Please arrive 3 hours early.</span> <!-- Text detailing a travel advisory -->
+                    </li> <!-- End the list item -->
+                    <li> <!-- Start a list item for a specific operational update -->
+                        <span class="dashboard-icon">🛡️</span> <!-- Decorative shield icon for security times -->
+                        <span><strong>Security Wait Times:</strong> Terminal 1: <span class="dashboard-status-badge dashboard-on-time">5 mins</span> | Terminal 2: <span class="dashboard-status-badge dashboard-boarding">15 mins</span></span> <!-- Text detailing security wait times with status badges -->
+                    </li> <!-- End the list item -->
+                    <li> <!-- Start a list item for a specific operational update -->
+                        <span class="dashboard-icon">🅿️</span> <!-- Decorative parking icon for parking status -->
+                        <span><strong>Parking Status:</strong> Short Term: <span class="dashboard-status-badge dashboard-delayed">Full</span> | Long Term: <span class="dashboard-status-badge dashboard-on-time">Available</span></span> <!-- Text detailing parking status with status badges -->
+                    </li> <!-- End the list item -->
+                    <li> <!-- Start a list item for a specific operational update -->
+                        <span class="dashboard-icon">🌤️</span> <!-- Decorative weather icon for local weather -->
+                        <span><strong>Local Weather:</strong> 26°C - Sunny & Clear</span> <!-- Text detailing the local weather -->
+                    </li> <!-- End the list item -->
+                    <li> <!-- Start a list item for a specific operational update -->
+                        <span class="dashboard-icon">⚡</span> <!-- Decorative lightning bolt icon for quick links -->
+                        <span><strong>Quick Links:</strong> <a href="#book">Book a Flight</a> | <a href="#facilities">Airport Facilities</a> | <a href="#baggage">Track Baggage</a></span> <!-- Text containing quick navigation links -->
+                    </li> <!-- End the list item -->
+                </ul> <!-- End the unordered list of operational updates -->
+            </div> <!-- End the operational updates list container -->
+        </div> <!-- End the dashboard content container -->
+    </section> <!-- End the Traveler Dashboard section -->
 
-    <!-- ==========================================================================
-         Person 5: Baggage Services Section
-         ========================================================================== -->
-    <section id="baggage" class="baggage-section">
-        <div class="baggage-content-container">
-            <div class="section-header-container">
-                <span class="floating-icon">🧳</span>
-                <h2>Baggage Services</h2>
-                <p>Track your luggage and stay informed</p>
-                <div class="decorative-divider"></div>
-            </div>
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <!--     Person 5: Baggage Services Section                                         --> <!-- HTML comment indicating section purpose -->
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <section id="baggage" class="baggage-section"> <!-- Start the Baggage Services section -->
+        <div class="baggage-content-container"> <!-- Wrapper container for the baggage content -->
+            <div class="baggage-header-container"> <!-- Container for the section header -->
+                <span class="baggage-floating-icon">🧳</span> <!-- Decorative floating suitcase icon -->
+                <h2>Baggage Services</h2> <!-- Section heading -->
+                <p>Track your luggage and stay informed</p> <!-- Section descriptive text -->
+                <div class="baggage-decorative-divider"></div> <!-- Decorative visual divider line -->
+            </div> <!-- End the section header container -->
 
-            <div class="information-cards-container">
-                <div class="information-card">
-                    <h3>🔍 Track Your Baggage</h3>
-                    <p>Enter your claim number or flight number to track your baggage.</p>
-                </div>
-                <div class="information-card">
-                    <h3>⚖️ Allowed Limits</h3>
-                    <p>Economy: 23 kg — First Class: 32 kg — Carry-on: 7 kg.</p>
-                </div>
-                <div class="information-card">
-                    <h3>📋 Report Lost Baggage</h3>
-                    <p>If missing, proceed to the baggage desk in the arrivals hall.</p>
-                </div>
-            </div>
+            <div class="baggage-information-cards-container"> <!-- Container for the baggage information cards -->
+                <div class="baggage-information-card"> <!-- Start an individual information card -->
+                    <h3>🔍 Track Your Baggage</h3> <!-- Card heading with a magnifying glass icon -->
+                    <p>Enter your claim number or flight number to track your baggage.</p> <!-- Card descriptive text -->
+                </div> <!-- End the information card -->
+                <div class="baggage-information-card"> <!-- Start an individual information card -->
+                    <h3>⚖️ Allowed Limits</h3> <!-- Card heading with a scales icon -->
+                    <p>Economy: 23 kg — First Class: 32 kg — Carry-on: 7 kg.</p> <!-- Card descriptive text detailing luggage limits -->
+                </div> <!-- End the information card -->
+                <div class="baggage-information-card"> <!-- Start an individual information card -->
+                    <h3>📋 Report Lost Baggage</h3> <!-- Card heading with a clipboard icon -->
+                    <p>If missing, proceed to the baggage desk in the arrivals hall.</p> <!-- Card descriptive text providing instructions for lost luggage -->
+                </div> <!-- End the information card -->
+            </div> <!-- End the baggage information cards container -->
 
-            <div class="status-container">
-                <h3>🛬 Baggage Claim Status</h3>
-                <div class="search-input-container">
-                    <input type="text" id="baggage-search-input" placeholder="Search by flight number..." oninput="filterBaggage()">
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Flight No.</th>
-                            <th>Route</th>
-                            <th>Belt No.</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="baggage-table-body">
-                        <tr>
-                            <td>MS 701</td><td>Cairo ✈ Dubai</td><td>Belt 3</td>
-                            <td><span class="status-badge on-time">Arrived</span></td>
-                        </tr>
-                        <tr>
-                            <td>EK 928</td><td>Cairo ✈ London</td><td>Belt 1</td>
-                            <td><span class="status-badge boarding">Loading</span></td>
-                        </tr>
-                        <tr>
-                            <td>TK 452</td><td>Istanbul ✈ Cairo</td><td>Belt 5</td>
-                            <td><span class="status-badge boarding">In Transit</span></td>
-                        </tr>
-                        <tr>
-                            <td>LH 334</td><td>Frankfurt ✈ Cairo</td><td>Belt 2</td>
-                            <td><span class="status-badge delayed">Delayed</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
+            <div class="baggage-status-container"> <!-- Container for the baggage claim status area -->
+                <h3>🛬 Baggage Claim Status</h3> <!-- Subheading for the baggage claim status area -->
+                <div class="baggage-search-input-container"> <!-- Container for the baggage search input -->
+                    <input type="text" id="baggage-search-input" placeholder="Search by flight number..." oninput="filterBaggage()"> <!-- Input field to search baggage by flight number, triggers filterBaggage() on input -->
+                </div> <!-- End the baggage search input container -->
+                <table class="baggage-table"> <!-- Start a table to display baggage status -->
+                    <thead> <!-- Table header section -->
+                        <tr> <!-- Table header row -->
+                            <th>Flight No.</th> <!-- Column header for Flight Number -->
+                            <th>Route</th> <!-- Column header for Route -->
+                            <th>Belt No.</th> <!-- Column header for Baggage Belt Number -->
+                            <th>Status</th> <!-- Column header for Baggage Status -->
+                        </tr> <!-- End table header row -->
+                    </thead> <!-- End table header section -->
+                    <tbody id="baggage-table-body"> <!-- Table body section with an ID for JavaScript manipulation -->
+                        <tr> <!-- Table row for a specific flight's baggage -->
+                            <td>MS 701</td><td>Cairo ✈ Dubai</td><td>Belt 3</td> <!-- Data cells for flight number, route, and belt number -->
+                            <td><span class="baggage-status-badge baggage-on-time">Arrived</span></td> <!-- Data cell containing a status badge for 'Arrived' -->
+                        </tr> <!-- End table row -->
+                        <tr> <!-- Table row for a specific flight's baggage -->
+                            <td>EK 928</td><td>Cairo ✈ London</td><td>Belt 1</td> <!-- Data cells for flight number, route, and belt number -->
+                            <td><span class="baggage-status-badge baggage-boarding">Loading</span></td> <!-- Data cell containing a status badge for 'Loading' -->
+                        </tr> <!-- End table row -->
+                        <tr> <!-- Table row for a specific flight's baggage -->
+                            <td>TK 452</td><td>Istanbul ✈ Cairo</td><td>Belt 5</td> <!-- Data cells for flight number, route, and belt number -->
+                            <td><span class="baggage-status-badge baggage-boarding">In Transit</span></td> <!-- Data cell containing a status badge for 'In Transit' -->
+                        </tr> <!-- End table row -->
+                        <tr> <!-- Table row for a specific flight's baggage -->
+                            <td>LH 334</td><td>Frankfurt ✈ Cairo</td><td>Belt 2</td> <!-- Data cells for flight number, route, and belt number -->
+                            <td><span class="baggage-status-badge baggage-delayed">Delayed</span></td> <!-- Data cell containing a status badge for 'Delayed' -->
+                        </tr> <!-- End table row -->
+                    </tbody> <!-- End table body section -->
+                </table> <!-- End baggage status table -->
+            </div> <!-- End the baggage status container -->
+        </div> <!-- End the baggage content container -->
+    </section> <!-- End the Baggage Services section -->
 
-    <!-- ==========================================================================
-         Person 6: Airport Facilities Section
-         ========================================================================== -->
-    <section id="facilities" class="facilities-section">
-        <div class="facilities-content-container">
-            <div class="section-header-container">
-                <span class="floating-icon">🏢</span>
-                <h2>Airport Facilities</h2>
-                <p>Everything you need for a comfortable stay</p>
-                <div class="decorative-divider"></div>
-            </div>
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <!--     Person 6: Airport Facilities Section                                       --> <!-- HTML comment indicating section purpose -->
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <section id="facilities" class="facilities-section"> <!-- Start the Airport Facilities section -->
+        <div class="facilities-content-container"> <!-- Wrapper container for the facilities content -->
+            <div class="facilities-header-container"> <!-- Container for the section header -->
+                <span class="facilities-floating-icon">🏢</span> <!-- Decorative floating building icon -->
+                <h2>Airport Facilities</h2> <!-- Section heading -->
+                <p>Everything you need for a comfortable stay</p> <!-- Section descriptive text -->
+                <div class="facilities-decorative-divider"></div> <!-- Decorative visual divider line -->
+            </div> <!-- End the section header container -->
             
-            <div class="simple-list-container">
-                <ul class="facilities-list">
-                    <li><span class="facility-icon">☕</span> <span><strong>Cafes & Restaurants:</strong> Enjoy a variety of dining options.</span></li>
-                    <li><span class="facility-icon">🛍️</span> <span><strong>Duty-Free Shops:</strong> Shop for luxury brands and souvenirs.</span></li>
-                    <li><span class="facility-icon">📶</span> <span><strong>Free Wi-Fi:</strong> Stay connected throughout the terminal.</span></li>
-                    <li><span class="facility-icon">🛋️</span> <span><strong>VIP Lounges:</strong> Relax in premium comfort before your flight.</span></li>
-                    <li><span class="facility-icon">💱</span> <span><strong>Currency Exchange:</strong> Convenient financial services.</span></li>
-                </ul>
-            </div>
-        </div>
-    </section>
+            <div class="facilities-simple-list-container"> <!-- Container for the list of facilities -->
+                <ul class="facilities-list"> <!-- Start the unordered list of facilities -->
+                    <li><span class="facilities-icon">☕</span> <span><strong>Cafes & Restaurants:</strong> Enjoy a variety of dining options.</span></li> <!-- List item detailing cafes and restaurants -->
+                    <li><span class="facilities-icon">🛍️</span> <span><strong>Duty-Free Shops:</strong> Shop for luxury brands and souvenirs.</span></li> <!-- List item detailing duty-free shops -->
+                    <li><span class="facilities-icon">📶</span> <span><strong>Free Wi-Fi:</strong> Stay connected throughout the terminal.</span></li> <!-- List item detailing free Wi-Fi availability -->
+                    <li><span class="facilities-icon">🛋️</span> <span><strong>VIP Lounges:</strong> Relax in premium comfort before your flight.</span></li> <!-- List item detailing VIP lounges -->
+                    <li><span class="facilities-icon">💱</span> <span><strong>Currency Exchange:</strong> Convenient financial services.</span></li> <!-- List item detailing currency exchange services -->
+                </ul> <!-- End the unordered list of facilities -->
+            </div> <!-- End the list container -->
+        </div> <!-- End the facilities content container -->
+    </section> <!-- End the Airport Facilities section -->
 
-    <!-- ==========================================================================
-         Person 7: Support Center Section
-         ========================================================================== -->
-    <section id="support" class="support-section">
-        <div class="support-content-container">
-            <div class="section-header-container">
-                <span class="floating-icon">🎧</span>
-                <h2>Support Center</h2>
-                <p class="subtitle">We are here to help 24/7</p>
-                <div class="decorative-divider"></div>
-            </div>
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <!--     Person 7: Support Center Section                                           --> <!-- HTML comment indicating section purpose -->
+    <!-- ========================================================================== --> <!-- HTML comment separator for organization -->
+    <section id="support" class="support-section"> <!-- Start the Support Center section -->
+        <div class="support-content-container"> <!-- Wrapper container for the support content -->
+            <div class="support-header-container"> <!-- Container for the section header -->
+                <span class="support-floating-icon">🎧</span> <!-- Decorative floating headset icon -->
+                <h2>Support Center</h2> <!-- Section heading -->
+                <p class="support-subtitle">We are here to help 24/7</p> <!-- Section descriptive subtitle -->
+                <div class="support-decorative-divider"></div> <!-- Decorative visual divider line -->
+            </div> <!-- End the section header container -->
 
-            <div class="information-cards-container">
-                <div class="information-card">
-                    <h3>📞 Call Us</h3>
-                    <p>+1 (800) 123-4567<br><span class="support-subtext">Available 24/7</span></p>
-                </div>
-                <div class="information-card">
-                    <h3>✉️ Email Us</h3>
-                    <p>support@airport.com<br><span class="support-subtext">We reply within 24h</span></p>
-                </div>
-                <div class="information-card">
-                    <h3>❓ FAQ</h3>
-                    <p>Visit our Help Center for frequently asked questions.</p>
-                </div>
-            </div>
+            <div class="support-information-cards-container"> <!-- Container for the support contact information cards -->
+                <div class="support-information-card"> <!-- Start an individual contact information card -->
+                    <h3>📞 Call Us</h3> <!-- Card heading with a telephone icon -->
+                    <p>+1 (800) 123-4567<br><span class="support-subtext">Available 24/7</span></p> <!-- Text providing the phone number and availability -->
+                </div> <!-- End the information card -->
+                <div class="support-information-card"> <!-- Start an individual contact information card -->
+                    <h3>✉️ Email Us</h3> <!-- Card heading with an envelope icon -->
+                    <p>support@airport.com<br><span class="support-subtext">We reply within 24h</span></p> <!-- Text providing the email address and response time -->
+                </div> <!-- End the information card -->
+                <div class="support-information-card"> <!-- Start an individual contact information card -->
+                    <h3>❓ FAQ</h3> <!-- Card heading with a question mark icon -->
+                    <p>Visit our Help Center for frequently asked questions.</p> <!-- Text directing users to the FAQ section -->
+                </div> <!-- End the information card -->
+            </div> <!-- End the support contact information cards container -->
 
-            <div class="contact-form-container">
-                <h3 class="contact-form-title">Send us a message</h3>
-                <form id="support-form" class="flight-search-form">
-                    <div class="form-input-group">
-                        <label>Name</label>
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-input-group">
-                        <label>Email</label>
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-input-group">
-                        <label>Message</label>
-                        <textarea placeholder="How can we help you?" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="search-button">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
+            <div class="support-contact-form-container"> <!-- Container for the contact form -->
+                <h3 class="support-contact-form-title">Send us a message</h3> <!-- Heading for the contact form -->
+                <form id="support-form" class="support-flight-search-form"> <!-- Start the contact form with a specific ID -->
+                    <div class="support-form-input-group"> <!-- Container for an individual form input group -->
+                        <label>Name</label> <!-- Label for the name input field -->
+                        <input type="text" placeholder="Your Name" required> <!-- Text input field for the user's name, marked as required -->
+                    </div> <!-- End the form input group -->
+                    <div class="support-form-input-group"> <!-- Container for an individual form input group -->
+                        <label>Email</label> <!-- Label for the email input field -->
+                        <input type="email" placeholder="Your Email" required> <!-- Email input field for the user's email address, marked as required -->
+                    </div> <!-- End the form input group -->
+                    <div class="support-form-input-group"> <!-- Container for an individual form input group -->
+                        <label>Message</label> <!-- Label for the message text area -->
+                        <textarea placeholder="How can we help you?" rows="4" required></textarea> <!-- Text area for the user's message, marked as required -->
+                    </div> <!-- End the form input group -->
+                    <button type="submit" class="support-search-button">Send Message</button> <!-- Submit button for the contact form -->
+                </form> <!-- End the contact form -->
+            </div> <!-- End the contact form container -->
+        </div> <!-- End the support content container -->
+    </section> <!-- End the Support Center section -->
 
-</body>
-</html>
+</body> <!-- End the body section -->
+</html> <!-- End the HTML document -->

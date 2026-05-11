@@ -1,562 +1,812 @@
-/* ==========================================================================
-   GLOBAL STYLES & SHARED COMPONENTS
-   ========================================================================== */
-:root {
-  --bg-dark: #0f172a;
-  --bg-card: #1e293b;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --accent: #38bdf8;
-  --accent-hover: #0ea5e9;
-  --border: rgba(56, 189, 248, 0.2);
-  --font-main: 'DM Sans', sans-serif;
-  --nav-height: 60px;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--nav-height);
-}
-
-body {
-  font-family: var(--font-main);
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-  padding-top: var(--nav-height);
-  line-height: 1.6;
-  position: relative;
-  z-index: 0;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url('./assets/images/hero-bg.jpg') center/cover;
-  opacity: 0.2;
-  z-index: -1;
-  pointer-events: none;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-section {
-  min-height: 100vh;
-  padding: 60px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid var(--bg-card);
-}
-
-.section-heading {
-  font-size: 2.5rem;
-  color: var(--accent);
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-/* Shared Headers */
-.section-header-container {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.floating-icon {
-  font-size: 48px;
-  margin-bottom: 12px;
-  display: block;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.decorative-divider {
-  width: 60px; height: 3px;
-  background: var(--accent);
-  margin: 14px auto 0; border-radius: 2px;
-}
-
-/* Shared Container Max Widths */
-.schedule-content-container,
-.booking-content-container,
-.dashboard-content-container,
-.baggage-content-container,
-.facilities-content-container,
-.support-content-container {
-  width: 100%;
-  max-width: 900px;
-}
-
-/* Shared Information Cards */
-.information-cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.information-card {
-  flex: 1;
-  min-width: 250px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 20px;
-  border-radius: 12px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-  cursor: pointer;
-}
-
-.information-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-}
-
-.information-card h3 {
-  color: var(--accent);
-  margin-bottom: 10px;
-}
-
-/* Shared Badges */
-.status-badge {
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-.status-badge.on-time { background: rgba(40, 200, 120, 0.15); color: #4ade80; }
-.status-badge.delayed { background: rgba(248, 113, 113, 0.15); color: #f87171; }
-.status-badge.boarding { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
-
-/* Shared Forms */
-.flight-search-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.flight-search-form label {
-  color: var(--accent);
-  font-size: 0.9rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.flight-search-form input,
-.flight-search-form select,
-.flight-search-form textarea {
-  width: 100%;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid var(--border);
-  color: var(--text-main);
-  padding: 12px;
-  border-radius: 8px;
-  margin-top: 5px;
-  font-family: inherit;
-}
-
-.flight-search-form textarea {
-  resize: vertical;
-}
-
-.search-button {
-  background-color: var(--accent);
-  color: var(--bg-dark);
-  font-weight: bold;
-  padding: 15px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.2s;
-  font-family: inherit;
-}
-
-.search-button:hover {
-  background-color: var(--accent-hover);
-}
-
-/* Shared Tables */
-.data-table-container {
-  width: 100%;
-  max-width: 900px;
-  overflow-x: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-th, td {
-  padding: 12px;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.05);
-}
-
-tbody tr {
-  transition: background 0.15s ease;
-}
-
-tbody tr:hover {
-  background: rgba(56, 189, 248, 0.05);
-}
-
-th {
-  background: var(--bg-card);
-  color: var(--accent);
-}
-
-/* ==========================================================================
-   Person 1: Navigation & Home Section
-   ========================================================================== */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: var(--nav-height);
-  background-color: var(--bg-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-.navigation-logo {
-  height: 32px;
-  width: 32px;
-  margin-right: auto;
-  margin-left: 20px;
-}
-
-nav a {
-  margin: 0 15px;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 20px;
-  transition: all 0.2s ease;
-}
-
-nav a:hover {
-  background: var(--accent);
-  color: var(--bg-dark);
-}
-
-.welcome-section {
-  position: relative;
-  background-color: transparent;
-  padding: 100px 20px 40px;
-}
-
-.welcome-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-  z-index: 1;
-}
-
-.welcome-content {
-  max-width: 500px;
-}
-
-.welcome-subtitle {
-  color: var(--accent);
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.welcome-title {
-  font-size: 4rem;
-  margin: 10px 0 20px;
-  line-height: 1.1;
-}
-
-.welcome-text {
-  font-size: 1.2rem;
-  color: var(--text-muted);
-}
-
-.flight-search-container {
-  background: rgba(30, 41, 59, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  padding: 30px;
-  border-radius: 16px;
-  width: 100%;
-  max-width: 400px;
-}
-
-.welcome-airplane-image {
-  position: absolute;
-  bottom: 0;
-  max-width: 80%;
-  z-index: 0;
-  animation: float 2s ease-in-out infinite alternate;
-}
-
-/* ==========================================================================
-   Person 2: Flight Schedule Section
-   ========================================================================== */
-.dashboard-filters {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.filter-button {
-  background: var(--bg-card);
-  color: var(--text-main);
-  border: 1px solid var(--border);
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.2s ease;
-}
-
-.filter-button.active,
-.filter-button:hover {
-  background: var(--accent);
-  color: var(--bg-dark);
-}
-
-/* ==========================================================================
-   Person 3: Book Ticket Section
-   ========================================================================== */
-.book-list-container {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 30px;
-  border-radius: 16px;
-}
-
-.book-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.book-list li {
-  display: flex;
-  align-items: center;
-  font-size: 1.1rem;
-  padding: 15px;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
-  transition: background 0.2s ease;
-  border-radius: 8px;
-}
-
-.book-list li:last-child {
-  border-bottom: none;
-}
-
-.book-list li:hover {
-  background: rgba(56, 189, 248, 0.05);
-}
-
-.book-icon {
-  font-size: 1.5rem;
-  margin-right: 15px;
-  background: rgba(56, 189, 248, 0.1);
-  padding: 10px;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ==========================================================================
-   Person 4: Traveler Dashboard Section
-   ========================================================================== */
-.dashboard-list-container {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 30px;
-  border-radius: 16px;
-}
-
-.dashboard-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.dashboard-list li {
-  display: flex;
-  align-items: center;
-  font-size: 1.1rem;
-  padding: 15px;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
-  transition: background 0.2s ease;
-  border-radius: 8px;
-}
-
-.dashboard-list li:last-child {
-  border-bottom: none;
-}
-
-.dashboard-list li:hover {
-  background: rgba(56, 189, 248, 0.05);
-}
-
-.dashboard-icon {
-  font-size: 1.5rem;
-  margin-right: 15px;
-  background: rgba(56, 189, 248, 0.1);
-  padding: 10px;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ==========================================================================
-   Person 5: Baggage Services Section
-   ========================================================================== */
-.status-container {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.search-input-container input {
-  width: 100%;
-  background: var(--bg-dark);
-  border: 1px solid var(--border);
-  color: var(--text-main);
-  padding: 10px;
-  border-radius: 8px;
-  margin: 15px 0;
-  font-family: inherit;
-}
-
-/* ==========================================================================
-   Person 6: Airport Facilities Section
-   ========================================================================== */
-.simple-list-container {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 30px;
-  border-radius: 16px;
-}
-
-.facilities-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.facilities-list li {
-  display: flex;
-  align-items: center;
-  font-size: 1.1rem;
-  padding: 15px;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
-  transition: background 0.2s ease;
-  border-radius: 8px;
-}
-
-.facilities-list li:last-child {
-  border-bottom: none;
-}
-
-.facilities-list li:hover {
-  background: rgba(56, 189, 248, 0.05);
-}
-
-.facility-icon {
-  font-size: 1.5rem;
-  margin-right: 15px;
-  background: rgba(56, 189, 248, 0.1);
-  padding: 10px;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ==========================================================================
-   Person 7: Support Center Section
-   ========================================================================== */
-.support-section h2 {
-  font-size: 2.5rem;
-  color: var(--accent);
-  margin-bottom: 10px;
-}
-
-.support-section .subtitle {
-  color: var(--text-muted);
-  font-size: 1.2rem;
-}
-
-.support-subtext {
-  color: var(--text-muted);
-  font-size: 0.9em;
-}
-
-.contact-form-container {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 30px;
-  border-radius: 16px;
-}
-
-.contact-form-title {
-  color: var(--accent);
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.support-section .subtitle {
-  color: var(--text-muted);
-  font-size: 1.2rem;
-}
-
-.support-subtext {
-  color: var(--text-muted);
-  font-size: 0.9em;
-}
-
-.contact-form-container {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  padding: 30px;
-  border-radius: 16px;
-}
-
-.contact-form-title {
-  color: var(--accent);
-  margin-bottom: 20px;
-  text-align: center;
-}
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+/* GLOBAL STYLES (Required for basic structure, not considered component sharing) */ /* CSS comment defining the section purpose */
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+* { /* CSS universal selector to target all elements */
+  box-sizing: border-box; /* Set box-sizing to border-box so padding and border are included in the element's total width and height */
+  margin: 0; /* Remove default margin for all elements */
+  padding: 0; /* Remove default padding for all elements */
+} /* End of the universal selector block */
+
+html { /* CSS selector targeting the root html element */
+  scroll-behavior: smooth; /* Enable smooth scrolling for anchor links within the page */
+  scroll-padding-top: 60px; /* Add padding to the top of the scroll area to account for the fixed navigation bar */
+} /* End of the html selector block */
+
+body { /* CSS selector targeting the body element */
+  font-family: 'DM Sans', sans-serif; /* Set the primary font family to DM Sans with a fallback to sans-serif */
+  background-color: #0f172a; /* Set the background color of the body to a dark blue shade */
+  color: #f8fafc; /* Set the default text color to off-white for readability on dark background */
+  padding-top: 60px; /* Add top padding to the body to push content below the fixed navigation bar */
+  line-height: 1.6; /* Set line height for better text readability */
+  position: relative; /* Set position to relative so absolute positioned pseudo-elements are contained */
+  z-index: 0; /* Establish a new stacking context with a base z-index */
+} /* End of the body selector block */
+
+body::before { /* CSS selector targeting the pseudo-element before the body content */
+  content: ""; /* Set empty content to render the pseudo-element */
+  position: fixed; /* Fix the position of the pseudo-element relative to the viewport */
+  inset: 0; /* Set top, right, bottom, and left properties to 0 to stretch across the viewport */
+  background: url('./assets/images/hero-bg.jpg') center/cover; /* Set a background image centered and scaled to cover the entire area */
+  opacity: 0.2; /* Reduce the opacity to create a subtle background effect */
+  z-index: -1; /* Place the background behind all other content in the stacking context */
+  pointer-events: none; /* Prevent the background from interfering with mouse events like clicking */
+} /* End of the body::before selector block */
+
+a { /* CSS selector targeting all anchor link elements */
+  color: inherit; /* Inherit the text color from the parent element */
+  text-decoration: none; /* Remove the default underline from links */
+} /* End of the a selector block */
+
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+/* Person 1: Navigation & Home Section                                        */ /* CSS comment defining the section owner and purpose */
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+nav { /* CSS selector targeting the navigation element */
+  position: fixed; /* Fix the navigation bar to the top of the viewport */
+  top: 0; /* Set the top offset to 0 */
+  width: 100%; /* Set the width to span the entire horizontal space */
+  height: 60px; /* Set a fixed height for the navigation bar */
+  background-color: #1e293b; /* Set the background color of the navigation bar to dark gray-blue */
+  display: flex; /* Use flexbox for layout of navigation items */
+  align-items: center; /* Vertically align items in the center of the navigation bar */
+  justify-content: center; /* Horizontally center the navigation items */
+  z-index: 100; /* Ensure the navigation bar is above all other content */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Add a subtle drop shadow to separate the nav from content */
+} /* End of the nav selector block */
+
+.navigation-logo { /* CSS selector for the logo image in the navigation */
+  height: 32px; /* Set a fixed height for the logo */
+  width: 32px; /* Set a fixed width for the logo */
+  margin-right: auto; /* Push the logo to the left by setting right margin to auto */
+  margin-left: 20px; /* Add margin to the left of the logo to separate it from the screen edge */
+} /* End of the .navigation-logo selector block */
+
+nav a { /* CSS selector for links within the navigation bar */
+  margin: 0 15px; /* Add horizontal spacing between links */
+  font-weight: bold; /* Make the link text bold */
+  padding: 8px 16px; /* Add padding inside the link to make a clickable button area */
+  border-radius: 20px; /* Round the corners of the clickable area */
+  transition: all 0.2s ease; /* Smooth transition effect for hover state changes over 0.2 seconds */
+} /* End of the nav a selector block */
+
+nav a:hover { /* CSS selector for links within the navigation bar on hover state */
+  background: #38bdf8; /* Change the background color to light blue on hover */
+  color: #0f172a; /* Change the text color to dark blue on hover for contrast */
+} /* End of the nav a:hover selector block */
+
+.welcome-section { /* CSS selector targeting the welcome/home section container */
+  min-height: 100vh; /* Make the section take up at least the full viewport height */
+  padding: 60px 20px; /* Add padding to the top/bottom and left/right */
+  display: flex; /* Use flexbox layout */
+  flex-direction: column; /* Stack flex items vertically */
+  align-items: center; /* Horizontally center content */
+  justify-content: center; /* Vertically center content */
+  position: relative; /* Set position to relative to contain absolute children (like the airplane) */
+  background-color: transparent; /* Make background transparent to show pseudo-element background */
+  padding: 100px 20px 20px 40px; /* Override previous padding to add more space at the top */
+} /* End of the .welcome-section selector block */
+
+.welcome-container { /* CSS selector targeting the inner wrapper of the welcome section */
+  display: flex; /* Use flexbox layout */
+  flex-wrap: wrap; /* Allow items to wrap onto the next line if space is limited */
+  gap: 40px; /* Add spacing between flex items */
+  align-items: center; /* Vertically align items in the center */
+  justify-content: space-between; /* Distribute space between items horizontally */
+  width: 100%; /* Set width to 100% of the parent */
+  max-width: 1200px; /* Limit the maximum width to 1200px for large screens */
+  z-index: 1; /* Ensure container is above the background pseudo-element */
+} /* End of the .welcome-container selector block */
+
+.welcome-content { /* CSS selector for the text content container in the welcome section */
+  max-width: 500px; /* Restrict the maximum width of the text block */
+} /* End of the .welcome-content selector block */
+
+.welcome-subtitle { /* CSS selector for the subtitle paragraph in the welcome section */
+  color: #38bdf8; /* Set subtitle text color to light blue */
+  font-weight: bold; /* Make the subtitle text bold */
+  letter-spacing: 2px; /* Add spacing between letters */
+  text-transform: uppercase; /* Convert text to uppercase */
+} /* End of the .welcome-subtitle selector block */
+
+.welcome-title { /* CSS selector for the main heading in the welcome section */
+  font-size: 4rem; /* Set a very large font size for the title */
+  margin: 10px 0 0  20px; /* Add top and bottom margins */
+  line-height: 1.1; /* Set a tight line height for the multiline heading */
+} /* End of the .welcome-title selector block */
+
+.welcome-text { /* CSS selector for the descriptive paragraph in the welcome section */
+  font-size: 1.2rem; /* Set a slightly larger text size */
+  color: #94a3b8; /* Set the text color to a muted gray-blue */
+} /* End of the .welcome-text selector block */
+
+.home-flight-search-container { /* CSS selector for the flight search form container */
+  background: rgba(30, 41, 59, 0.8); /* Semi-transparent dark background */
+  border: 3px solid rgba(56, 189, 248, 0.2); /* Subtle blue border */
+  padding: 30px; /* Inner spacing around the form */
+  border-radius: 16px; /* Rounded corners */
+  width: 100%; /* Take full width of parent flex item */
+  max-width: 400px; /* Limit width */
+} /* End of the .home-flight-search-container selector block */
+
+.home-flight-search-form { /* CSS selector for the form element itself */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack input groups vertically */
+  gap: 15px; /* Spacing between form fields */
+} /* End of the .home-flight-search-form selector block */
+
+.home-flight-search-form label { /* CSS selector for form labels */
+  color: #38bdf8; /* Light blue text color */
+  font-size: 0.9rem; /* Slightly smaller text size */
+  font-weight: bold; /* Make text bold */
+  text-transform: uppercase; /* Convert text to uppercase */
+} /* End of label selector block */
+
+.home-flight-search-form input, /* CSS selector for input elements within the form */
+.home-flight-search-form select { /* CSS selector for select elements within the form */
+  width: 100%; /* Span full width of the form container */
+  background: rgba(15, 23, 42, 0.8); /* Darker semi-transparent background for inputs */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Subtle blue border */
+  color: #f8fafc; /* White text color inside input */
+  padding: 12px; /* Inner padding */
+  border-radius: 8px; /* Slightly rounded corners */
+  margin-top: 5px; /* Spacing above the input, below label */
+  font-family: inherit; /* Inherit global font family */
+} /* End of input/select selector block */
+
+.home-search-button { /* CSS selector for the submit button in the form */
+  background-color: #38bdf8; /* Solid light blue background */
+  color: #0f172a; /* Dark text color for contrast */
+  font-weight: bold; /* Bold text */
+  padding: 15px; /* Inner padding for larger hit area */
+  border-radius: 8px; /* Rounded corners */
+  border: none; /* Remove default border */
+  cursor: pointer; /* Change cursor to pointer to indicate interactivity */
+  margin-top: 10px; /* Extra space above the button */
+  transition: background 0.2s; /* Smooth background color transition */
+  font-family: inherit; /* Inherit global font family */
+} /* End of .home-search-button selector block */
+
+.home-search-button:hover { /* CSS selector for hover state of the submit button */
+  background-color: #0ea5e9; /* Darker shade of blue on hover */
+} /* End of hover selector block */
+
+.welcome-airplane-image { /* CSS selector for the decorative airplane image */
+  position: absolute; /* Position absolute to overlay it on the section */
+  bottom: 0; /* Align to bottom of the section */
+  max-width: 80%; /* Limit maximum size */
+  z-index: 0; /* Place it below the main text and form (z-index 1) */
+  animation: float 2s ease-in-out infinite alternate; /* Apply a floating animation */
+} /* End of .welcome-airplane-image selector block */
+
+@keyframes float { /* Keyframe definition for the floating animation */
+  0%, 100% { transform: translateY(0); } /* Start and end states with no vertical translation */
+  50% { transform: translateY(-8px); } /* Middle state shifting image up by 8 pixels */
+} /* End of @keyframes block */
+
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+/* Person 2: Flight Schedule Section                                          */ /* CSS comment defining the section owner and purpose */
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+.schedule-section { /* CSS selector for the flight schedule section */
+  min-height: 100vh; /* Make section at least full viewport height */
+  padding: 60px 20px; /* Top/bottom and side padding */
+  display: flex; /* Flex layout */
+  flex-direction: column; /* Stack vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  border-bottom: 1px solid #1e293b; /* Divider border */
+} /* End of .schedule-section selector block */
+
+.schedule-content-container { /* CSS selector for the inner content container */
+  width: 100%; /* Full width */
+  max-width: 900px; /* Cap width for readability */
+} /* End of .schedule-content-container selector block */
+
+.schedule-header-container { /* CSS selector for the header text area */
+  text-align: center; /* Center text */
+  margin-bottom: 30px; /* Space below header */
+} /* End of .schedule-header-container selector block */
+
+.schedule-floating-icon { /* CSS selector for the icon in the header */
+  font-size: 48px; /* Large size */
+  margin-bottom: 12px; /* Space below icon */
+  display: block; /* Make it a block element to sit on its own line */
+  animation: float 3s ease-in-out infinite; /* Reuse floating animation with slower duration */
+} /* End of .schedule-floating-icon selector block */
+
+.schedule-header-container h2 { /* CSS selector for the section heading */
+  font-size: 2.5rem; /* Large text size */
+  color: #38bdf8; /* Light blue text color */
+  margin-bottom: 30px; /* Space below heading */
+} /* End of heading selector block */
+
+.schedule-decorative-divider { /* CSS selector for the visual divider line */
+  width: 60px; height: 3px; /* Dimensions for the small line */
+  background: #38bdf8; /* Blue color */
+  margin: 14px auto 0; border-radius: 2px; /* Auto side margins to center it, rounded ends */
+} /* End of .schedule-decorative-divider selector block */
+
+.schedule-simple-list-container { /* CSS selector for the container holding the list */
+  background: #1e293b; /* Card background color */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Subtle blue border */
+  padding: 30px; /* Internal spacing */
+  border-radius: 16px; /* Rounded corners */
+} /* End of .schedule-simple-list-container selector block */
+
+.schedule-facilities-list { /* CSS selector for the unordered list (ul) */
+  list-style: none; /* Remove default bullet points */
+  display: flex; /* Flex layout */
+  flex-direction: column; /* Stack list items vertically */
+  gap: 10px; /* Spacing between list items */
+} /* End of .schedule-facilities-list selector block */
+
+.schedule-facilities-list li { /* CSS selector for individual list items (li) */
+  display: flex; /* Flex layout to align icon and text horizontally */
+  align-items: center; /* Vertically center icon and text */
+  font-size: 1.1rem; /* Base text size */
+  padding: 15px; /* Inner padding for list item */
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1); /* Subtle divider line between items */
+  transition: background 0.2s ease; /* Hover transition */
+  border-radius: 8px; /* Rounded corners */
+} /* End of li selector block */
+
+.schedule-facilities-list li:last-child { /* CSS selector for the last list item */
+  border-bottom: none; /* Remove border on the last item to avoid double line at bottom of container */
+} /* End of :last-child selector block */
+
+.schedule-facilities-list li:hover { /* CSS selector for hover state of list item */
+  background: rgba(56, 189, 248, 0.05); /* Highlight background slightly on hover */
+} /* End of hover selector block */
+
+.schedule-facility-icon { /* CSS selector for the icon inside list items */
+  font-size: 1.5rem; /* Icon size */
+  margin-right: 15px; /* Space between icon and text */
+  background: rgba(56, 189, 248, 0.1); /* Subtle background circle */
+  padding: 10px; /* Padding to shape the background */
+  border-radius: 50%; /* Make background a circle */
+  width: 48px; /* Fixed width */
+  height: 48px; /* Fixed height */
+  display: inline-flex; /* Flex to center icon inside circle */
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+} /* End of .schedule-facility-icon selector block */
+
+.schedule-status-badge { /* CSS selector for the flight status badge (pill shape) */
+  padding: 4px 10px; /* Top/bottom and left/right padding */
+  border-radius: 20px; /* Fully rounded pill shape */
+  font-size: 0.8rem; /* Smaller text size */
+  font-weight: bold; /* Bold text */
+} /* End of .schedule-status-badge selector block */
+.schedule-on-time { background: rgba(40, 200, 120, 0.15); color: #4ade80; } /* Green theme for 'On Time' status */
+.schedule-delayed { background: rgba(248, 113, 113, 0.15); color: #f87171; } /* Red theme for 'Delayed' status */
+.schedule-boarding { background: rgba(251, 191, 36, 0.15); color: #fbbf24; } /* Yellow/Orange theme for 'Boarding' status */
+
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+/* Person 3: Book Ticket Section                                              */ /* CSS comment defining the section owner and purpose */
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+.book-ticket-section { /* CSS selector for the book ticket section */
+  min-height: 100vh; /* Minimum viewport height */
+  padding: 60px 20px; /* Internal spacing */
+  display: flex; /* Flex layout */
+  flex-direction: column; /* Vertical stacking */
+  align-items: center; /* Horizontal centering */
+  justify-content: center; /* Vertical centering */
+  border-bottom: 1px solid #1e293b; /* Bottom border */
+} /* End of .book-ticket-section selector block */
+
+.book-content-container { /* CSS selector for content wrapper */
+  width: 100%; /* Full width */
+  max-width: 900px; /* Constrain max width */
+} /* End of .book-content-container selector block */
+
+.book-header-container { /* CSS selector for section header */
+  text-align: center; /* Center text */
+  margin-bottom: 30px; /* Space below */
+} /* End of .book-header-container selector block */
+
+.book-floating-icon { /* CSS selector for floating header icon */
+  font-size: 48px; /* Icon size */
+  margin-bottom: 12px; /* Bottom margin */
+  display: block; /* Block layout */
+  animation: float 3s ease-in-out infinite; /* Floating animation */
+} /* End of .book-floating-icon selector block */
+
+.book-header-container h2 { /* CSS selector for heading */
+  font-size: 2.5rem; /* Size */
+  color: #38bdf8; /* Color */
+  margin-bottom: 30px; /* Spacing */
+} /* End of heading selector block */
+
+.book-decorative-divider { /* CSS selector for divider */
+  width: 60px; height: 3px; /* Dimensions */
+  background: #38bdf8; /* Color */
+  margin: 14px auto 0; border-radius: 2px; /* Margin and radius */
+} /* End of divider selector block */
+
+.book-list-container { /* CSS selector for list card container */
+  background: #1e293b; /* Dark card color */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Border */
+  padding: 30px; /* Padding */
+  border-radius: 16px; /* Rounded corners */
+} /* End of container selector block */
+
+.book-list { /* CSS selector for ul */
+  list-style: none; /* No bullets */
+  display: flex; /* Flex */
+  flex-direction: column; /* Stacked */
+  gap: 10px; /* Gap */
+} /* End of list selector block */
+
+.book-list li { /* CSS selector for li */
+  display: flex; /* Flex row */
+  align-items: center; /* Centered */
+  font-size: 1.1rem; /* Font size */
+  padding: 15px; /* Padding */
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1); /* Divider */
+  transition: background 0.2s ease; /* Transition */
+  border-radius: 8px; /* Radius */
+} /* End of li selector block */
+
+.book-list li:last-child { /* CSS selector for last li */
+  border-bottom: none; /* Remove bottom border */
+} /* End of last-child selector block */
+
+.book-list li:hover { /* CSS selector for li hover */
+  background: rgba(56, 189, 248, 0.05); /* Hover background */
+} /* End of hover selector block */
+
+.book-icon { /* CSS selector for li icon */
+  font-size: 1.5rem; /* Size */
+  margin-right: 15px; /* Margin */
+  background: rgba(56, 189, 248, 0.1); /* Circle bg */
+  padding: 10px; /* Padding */
+  border-radius: 50%; /* Circle shape */
+  width: 48px; /* Fixed width */
+  height: 48px; /* Fixed height */
+  display: inline-flex; /* Inline flex for centering */
+  align-items: center; /* Center Y */
+  justify-content: center; /* Center X */
+} /* End of icon selector block */
+
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+/* Person 4: Traveler Dashboard Section                                       */ /* CSS comment defining the section owner and purpose */
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+.dashboard-section { /* CSS selector for dashboard section */
+  min-height: 100vh; /* Min height */
+  padding: 60px 20px; /* Padding */
+  display: flex; /* Flex */
+  flex-direction: column; /* Vertical stack */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  border-bottom: 1px solid #1e293b; /* Border */
+} /* End of section selector block */
+
+.dashboard-content-container { /* CSS selector for container */
+  width: 100%; /* Width */
+  max-width: 900px; /* Max width */
+} /* End of container selector block */
+
+.dashboard-header-container { /* CSS selector for header */
+  text-align: center; /* Center text */
+  margin-bottom: 30px; /* Margin bottom */
+} /* End of header container selector block */
+
+.dashboard-floating-icon { /* CSS selector for floating icon */
+  font-size: 48px; /* Size */
+  margin-bottom: 12px; /* Margin */
+  display: block; /* Block */
+  animation: float 3s ease-in-out infinite; /* Animation */
+} /* End of icon selector block */
+
+.dashboard-header-container h2 { /* CSS selector for heading */
+  font-size: 2.5rem; /* Size */
+  color: #38bdf8; /* Color */
+  margin-bottom: 30px; /* Margin */
+} /* End of heading selector block */
+
+.dashboard-decorative-divider { /* CSS selector for divider */
+  width: 60px; height: 3px; /* Dimensions */
+  background: #38bdf8; /* Color */
+  margin: 14px auto 0; border-radius: 2px; /* Alignment and shape */
+} /* End of divider selector block */
+
+.dashboard-list-container { /* CSS selector for list card container */
+  background: #1e293b; /* Card bg */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Border */
+  padding: 30px; /* Padding */
+  border-radius: 16px; /* Radius */
+} /* End of container selector block */
+
+.dashboard-list { /* CSS selector for list ul */
+  list-style: none; /* Remove bullets */
+  display: flex; /* Flex layout */
+  flex-direction: column; /* Stacked */
+  gap: 10px; /* Spacing */
+} /* End of list selector block */
+
+.dashboard-list li { /* CSS selector for list li */
+  display: flex; /* Row flex layout */
+  align-items: center; /* Vertical center */
+  font-size: 1.1rem; /* Font size */
+  padding: 15px; /* Padding */
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1); /* Line divider */
+  transition: background 0.2s ease; /* Hover transition */
+  border-radius: 8px; /* Radius */
+} /* End of li selector block */
+
+.dashboard-list li:last-child { /* CSS selector for last li */
+  border-bottom: none; /* No bottom border */
+} /* End of last-child selector block */
+
+.dashboard-list li:hover { /* CSS selector for hover state */
+  background: rgba(56, 189, 248, 0.05); /* Highlight color */
+} /* End of hover selector block */
+
+.dashboard-icon { /* CSS selector for item icon */
+  font-size: 1.5rem; /* Font size */
+  margin-right: 15px; /* Spacing */
+  background: rgba(56, 189, 248, 0.1); /* Circle background */
+  padding: 10px; /* Padding */
+  border-radius: 50%; /* Make circle */
+  width: 48px; /* Fixed width */
+  height: 48px; /* Fixed height */
+  display: inline-flex; /* Inline flex container */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+} /* End of icon selector block */
+
+.dashboard-status-badge { /* CSS selector for status indicator pills */
+  padding: 4px 10px; /* Padding */
+  border-radius: 20px; /* Rounded pill shape */
+  font-size: 0.8rem; /* Text size */
+  font-weight: bold; /* Bold text */
+} /* End of badge selector block */
+.dashboard-on-time { background: rgba(40, 200, 120, 0.15); color: #4ade80; } /* Status green */
+.dashboard-delayed { background: rgba(248, 113, 113, 0.15); color: #f87171; } /* Status red */
+.dashboard-boarding { background: rgba(251, 191, 36, 0.15); color: #fbbf24; } /* Status yellow */
+
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+/* Person 5: Baggage Services Section                                         */ /* CSS comment defining the section owner and purpose */
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+.baggage-section { /* CSS selector for baggage section wrapper */
+  min-height: 100vh; /* Viewport minimum height */
+  padding: 60px 20px; /* Vertical and horizontal padding */
+  display: flex; /* Flexbox */
+  flex-direction: column; /* Vertical alignment */
+  align-items: center; /* Centered content */
+  justify-content: center; /* Center alignment */
+  border-bottom: 1px solid #1e293b; /* Divider border */
+} /* End of section selector block */
+
+.baggage-content-container { /* CSS selector for content constraint container */
+  width: 100%; /* Span full allowed width */
+  max-width: 900px; /* Limit width */
+} /* End of container selector block */
+
+.baggage-header-container { /* CSS selector for heading container */
+  text-align: center; /* Center alignment for text */
+  margin-bottom: 30px; /* Margin to space out content below */
+} /* End of heading container block */
+
+.baggage-floating-icon { /* CSS selector for animated icon */
+  font-size: 48px; /* Set icon size */
+  margin-bottom: 12px; /* Bottom margin */
+  display: block; /* Make block level */
+  animation: float 3s ease-in-out infinite; /* Apply float animation loop */
+} /* End of icon block */
+
+.baggage-header-container h2 { /* CSS selector for section title */
+  font-size: 2.5rem; /* Font size */
+  color: #38bdf8; /* Blue text color */
+  margin-bottom: 30px; /* Space below title */
+} /* End of h2 selector block */
+
+.baggage-decorative-divider { /* CSS selector for separator line */
+  width: 60px; height: 3px; /* Dimensions */
+  background: #38bdf8; /* Blue color */
+  margin: 14px auto 0; border-radius: 2px; /* Spacing and corner styling */
+} /* End of divider block */
+
+.baggage-information-cards-container { /* CSS selector for info card layout container */
+  display: flex; /* Use flexbox for grid-like layout */
+  flex-wrap: wrap; /* Wrap cards on smaller screens */
+  gap: 20px; /* Space between cards */
+  margin-bottom: 30px; /* Space below the card grid */
+} /* End of container block */
+
+.baggage-information-card { /* CSS selector for individual info cards */
+  flex: 1; /* Allow cards to grow and fill available space evenly */
+  min-width: 250px; /* Ensure cards don't shrink too much on mobile */
+  background: #1e293b; /* Card background color */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Soft border */
+  padding: 20px; /* Internal padding */
+  border-radius: 12px; /* Rounded card corners */
+  transition: transform 0.2s ease, border-color 0.2s ease; /* Hover animation transitions */
+  cursor: pointer; /* Change cursor on hover */
+} /* End of card selector block */
+
+.baggage-information-card:hover { /* CSS selector for hover effect on info cards */
+  transform: translateY(-4px); /* Move card slightly up */
+  border-color: #38bdf8; /* Brighten border color */
+} /* End of hover block */
+
+.baggage-information-card h3 { /* CSS selector for card title */
+  color: #38bdf8; /* Colored title */
+  margin-bottom: 10px; /* Spacing below title */
+} /* End of card h3 block */
+
+.baggage-status-container { /* CSS selector for baggage tracking table area */
+  background: #1e293b; /* Card background */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Border styling */
+  padding: 20px; /* Content padding */
+  border-radius: 12px; /* Container rounded corners */
+} /* End of status container block */
+
+.baggage-search-input-container input { /* CSS selector for the search input field */
+  width: 100%; /* Stretch across parent */
+  background: #0f172a; /* Darker input background */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Input border */
+  color: #f8fafc; /* Text color */
+  padding: 10px; /* Padding for input area */
+  border-radius: 8px; /* Rounded corners */
+  margin: 15px 0; /* Vertical margins */
+  font-family: inherit; /* Use same font as body */
+} /* End of input block */
+
+.baggage-table { /* CSS selector for data table */
+  width: 100%; /* Table spans full width */
+  border-collapse: collapse; /* Merge cell borders */
+  text-align: left; /* Left align table data */
+} /* End of table block */
+
+.baggage-table th, .baggage-table td { /* CSS selector for table headers and cells */
+  padding: 12px; /* Cell padding */
+  border-bottom: 1px solid rgba(56, 189, 248, 0.05); /* Divider under rows */
+} /* End of cell block */
+
+.baggage-table tbody tr { /* CSS selector for table body rows */
+  transition: background 0.15s ease; /* Smooth background change on hover */
+} /* End of row block */
+
+.baggage-table tbody tr:hover { /* CSS selector for hover state of rows */
+  background: rgba(56, 189, 248, 0.05); /* Row highlight color */
+} /* End of row hover block */
+
+.baggage-table th { /* CSS selector for table headers */
+  background: #1e293b; /* Header background color */
+  color: #38bdf8; /* Header text color */
+} /* End of th block */
+
+.baggage-status-badge { /* CSS selector for baggage status pills */
+  padding: 4px 10px; /* Pill padding */
+  border-radius: 20px; /* Full rounded borders */
+  font-size: 0.8rem; /* Text size */
+  font-weight: bold; /* Bold style */
+} /* End of badge block */
+.baggage-on-time { background: rgba(40, 200, 120, 0.15); color: #4ade80; } /* Status green */
+.baggage-delayed { background: rgba(248, 113, 113, 0.15); color: #f87171; } /* Status red */
+.baggage-boarding { background: rgba(251, 191, 36, 0.15); color: #fbbf24; } /* Status yellow */
+
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+/* Person 6: Airport Facilities Section                                       */ /* CSS comment defining the section owner and purpose */
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+.facilities-section { /* CSS selector for facilities section wrapper */
+  min-height: 100vh; /* Min height viewport */
+  padding: 60px 20px; /* Spacing */
+  display: flex; /* Flex container */
+  flex-direction: column; /* Column stack */
+  align-items: center; /* Horizontally centered */
+  justify-content: center; /* Vertically centered */
+  border-bottom: 1px solid #1e293b; /* Lower boundary border */
+} /* End of section block */
+
+.facilities-content-container { /* CSS selector for max-width wrapper */
+  width: 100%; /* Stretch width */
+  max-width: 900px; /* Limit width */
+} /* End of wrapper block */
+
+.facilities-header-container { /* CSS selector for section headers */
+  text-align: center; /* Center header text */
+  margin-bottom: 30px; /* Push content down */
+} /* End of header block */
+
+.facilities-floating-icon { /* CSS selector for animated icon */
+  font-size: 48px; /* Make it large */
+  margin-bottom: 12px; /* Bottom space */
+  display: block; /* Make it a block */
+  animation: float 3s ease-in-out infinite; /* Trigger animation */
+} /* End of icon block */
+
+.facilities-header-container h2 { /* CSS selector for title */
+  font-size: 2.5rem; /* Title size */
+  color: #38bdf8; /* Title color */
+  margin-bottom: 30px; /* Margin below title */
+} /* End of title block */
+
+.facilities-decorative-divider { /* CSS selector for small dividing line */
+  width: 60px; height: 3px; /* Dimensions */
+  background: #38bdf8; /* Color */
+  margin: 14px auto 0; border-radius: 2px; /* Margins for centering */
+} /* End of divider block */
+
+.facilities-simple-list-container { /* CSS selector for card surrounding list */
+  background: #1e293b; /* Card bg */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Card border */
+  padding: 30px; /* Inner padding */
+  border-radius: 16px; /* Rounded corners */
+} /* End of container block */
+
+.facilities-list { /* CSS selector for ul */
+  list-style: none; /* Discard bullets */
+  display: flex; /* Flex layout */
+  flex-direction: column; /* Stacked layout */
+  gap: 10px; /* Inter-item gap */
+} /* End of ul block */
+
+.facilities-list li { /* CSS selector for individual list elements */
+  display: flex; /* Flex layout for alignment */
+  align-items: center; /* Align items along cross axis */
+  font-size: 1.1rem; /* Text size */
+  padding: 15px; /* Spacing */
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1); /* Line to separate items */
+  transition: background 0.2s ease; /* Hover visual transition */
+  border-radius: 8px; /* Item corner radius */
+} /* End of li block */
+
+.facilities-list li:last-child { /* CSS selector to modify last list item */
+  border-bottom: none; /* Drop bottom border */
+} /* End of last-child block */
+
+.facilities-list li:hover { /* CSS selector for item hover */
+  background: rgba(56, 189, 248, 0.05); /* Slight background pop */
+} /* End of hover block */
+
+.facilities-icon { /* CSS selector for decorative list icon */
+  font-size: 1.5rem; /* Size of text/emoji */
+  margin-right: 15px; /* Right spacing */
+  background: rgba(56, 189, 248, 0.1); /* Circular background color */
+  padding: 10px; /* Expand background */
+  border-radius: 50%; /* Make fully round */
+  width: 48px; /* Fixed dimension */
+  height: 48px; /* Fixed dimension */
+  display: inline-flex; /* Use flex to align child */
+  align-items: center; /* Center within circle */
+  justify-content: center; /* Center within circle */
+} /* End of icon block */
+
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+/* Person 7: Support Center Section                                           */ /* CSS comment defining the section owner and purpose */
+/* ========================================================================== */ /* CSS comment separator for visual organization */
+.support-section { /* CSS selector for main support wrapper */
+  min-height: 100vh; /* Full page minimum height */
+  padding: 60px 20px; /* Padding for spatial breathing room */
+  display: flex; /* Initiate flex formatting context */
+  flex-direction: column; /* Arrange content column-wise */
+  align-items: center; /* Bring items to center axis */
+  justify-content: center; /* Center relative to flex container */
+  border-bottom: 1px solid #1e293b; /* Separate sections with bottom border */
+} /* End of section block */
+
+.support-content-container { /* CSS selector for restricting content spread */
+  width: 100%; /* Claim maximum percentage space */
+  max-width: 900px; /* Limit expansion for UI optimization */
+} /* End of container block */
+
+.support-header-container { /* CSS selector for support header segment */
+  text-align: center; /* Push text to middle */
+  margin-bottom: 30px; /* Space padding at bottom */
+} /* End of header container block */
+
+.support-floating-icon { /* CSS selector to define floating animated icon */
+  font-size: 48px; /* Specify a larger font pixel size */
+  margin-bottom: 12px; /* Margin under icon */
+  display: block; /* Treat element as block scope */
+  animation: float 3s ease-in-out infinite; /* Initiate repeating transform animation */
+} /* End of icon block */
+
+.support-header-container h2 { /* CSS selector for the section's H2 element */
+  font-size: 2.5rem; /* Large explicit dimension */
+  color: #38bdf8; /* Highlight with blue text */
+  margin-bottom: 10px; /* Tweak bottom spacing constraint */
+} /* End of h2 block */
+
+.support-subtitle { /* CSS selector styling support subtitle string */
+  color: #94a3b8; /* Mute color slightly */
+  font-size: 1.2rem; /* Minor dimensional enlargement */
+} /* End of subtitle block */
+
+.support-decorative-divider { /* CSS selector for structural line break */
+  width: 60px; height: 3px; /* Static sizing */
+  background: #38bdf8; /* Foreground hue assignment */
+  margin: 14px auto 0; border-radius: 2px; /* Layout margins and shape styling */
+} /* End of divider block */
+
+.support-information-cards-container { /* CSS selector creating grid logic for cards */
+  display: flex; /* Turn element to flex box container */
+  flex-wrap: wrap; /* Command elements to break line on overflow */
+  gap: 20px; /* Mandate 20px gaps everywhere between items */
+  margin-bottom: 30px; /* Mandate 30px gap below the grid */
+} /* End of card container block */
+
+.support-information-card { /* CSS selector for individual context card styling */
+  flex: 1; /* Stretch and allocate remaining positive space equally */
+  min-width: 250px; /* Hard bound minimal shrinkage to prevent squishing */
+  background: #1e293b; /* Secondary level dark slate assignment */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Trace out the border bounds */
+  padding: 20px; /* Provide padding structure offset */
+  border-radius: 12px; /* Create pillbox visual styling on angles */
+  transition: transform 0.2s ease, border-color 0.2s ease; /* Specify dual interaction hover changes */
+  cursor: pointer; /* Change cursor semantics on mouseover pointer interaction */
+} /* End of card block */
+
+.support-information-card:hover { /* CSS selector dictating pointer hover states */
+  transform: translateY(-4px); /* Lift element up on Y axis when interacted with */
+  border-color: #38bdf8; /* Sharpen outline border representation */
+} /* End of hover block */
+
+.support-information-card h3 { /* CSS selector targeting sub-card headers */
+  color: #38bdf8; /* Change font color logic to cyan */
+  margin-bottom: 10px; /* Shift text further down internally */
+} /* End of h3 block */
+
+.support-subtext { /* CSS selector for nuanced internal info */
+  color: #94a3b8; /* Subdued slate gray color selection */
+  font-size: 0.9em; /* Demote size relative to its parent DOM object */
+} /* End of subtext block */
+
+.support-contact-form-container { /* CSS selector isolating form view context */
+  background: #1e293b; /* Container deep blue hue representation */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Thin semi-transparent border boundary */
+  padding: 30px; /* Padding variable application for whitespace */
+  border-radius: 16px; /* Soften square visuals with calculated curvature */
+} /* End of container block */
+
+.support-contact-form-title { /* CSS selector to dictate styling for form heading */
+  color: #38bdf8; /* Implement accent cyan coloring */
+  margin-bottom: 20px; /* Specify explicit bottom gap padding mapping */
+  text-align: center; /* Orient line text string into explicit middle position */
+} /* End of title block */
+
+.support-flight-search-form { /* CSS selector addressing generic nested wrapper box */
+  display: flex; /* Shift format container to unified flex state */
+  flex-direction: column; /* Force items to arrange downwards linearly */
+  gap: 15px; /* Insert a calculated padding boundary uniformly */
+} /* End of form wrapper block */
+
+.support-flight-search-form label { /* CSS selector mapping the title string for each discrete section */
+  color: #38bdf8; /* Implement base highlighted brand aesthetic */
+  font-size: 0.9rem; /* Map size property scaling */
+  font-weight: bold; /* Bold mapping setting */
+  text-transform: uppercase; /* Alter formatting string output property uppercase mapping */
+} /* End of label block */
+
+.support-flight-search-form input, /* CSS selector applying styles to normal field inputs */
+.support-flight-search-form textarea { /* CSS selector combining with textarea properties */
+  width: 100%; /* Override scale boundaries to absolute full mapping */
+  background: rgba(15, 23, 42, 0.8); /* Generate distinct background shade context field */
+  border: 1px solid rgba(56, 189, 248, 0.2); /* Generate distinct frame boundaries */
+  color: #f8fafc; /* Define internal text visibility metric */
+  padding: 12px; /* Pad inside area structure variable */
+  border-radius: 8px; /* Set radius for shape curve definition mapping */
+  margin-top: 5px; /* Shift downward property spacing layout */
+  font-family: inherit; /* Mirror main body tree system family formatting */
+} /* End of input/textarea block */
+
+.support-flight-search-form textarea { /* CSS selector solely addressing the larger string fields */
+  resize: vertical; /* Exclusively block and allow user structural modification downwards */
+} /* End of textarea block */
+
+.support-search-button { /* CSS selector setting final form interaction trigger button styling */
+  background-color: #38bdf8; /* Inject main blue brand styling variable logic */
+  color: #0f172a; /* Assign inverse visibility contrasting color scheme format */
+  font-weight: bold; /* Enable structural font styling logic mapping weight */
+  padding: 15px; /* Set space logic around internal object variable string */
+  border-radius: 8px; /* Calculate corner rounding box shape metrics logic */
+  border: none; /* Remove native inherited formatting element shape logic */
+  cursor: pointer; /* Flag OS level interaction string event pointer context */
+  margin-top: 10px; /* Space buffer from upper elements */
+  transition: background 0.2s; /* Buffer timing state change transition styling animation */
+  font-family: inherit; /* Pull base level DOM object properties mapping logic formatting */
+} /* End of button block */
+
+.support-search-button:hover { /* CSS selector intercepting logical user pointer hover interactions */
+  background-color: #0ea5e9; /* Reassign shade hue variable on interaction */
+} /* End of hover block */
